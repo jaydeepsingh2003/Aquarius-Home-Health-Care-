@@ -20,7 +20,8 @@ import {
   sanitizePhone,
   isBotHoneypotTriggered,
   securityRateLimiter, 
-  logSecurityAudit 
+  logSecurityAudit,
+  dispatchEmailNotification
 } from '../utils/security';
 
 export default function CareAssessmentWizard() {
@@ -112,6 +113,18 @@ export default function CareAssessmentWizard() {
 
     // 5. Ephemeral Security Audit Log
     logSecurityAudit('CARE_ASSESSMENT_SUBMITTED', { trackingId: newTrackingId });
+
+    // 6. Secure SMTP Dispatch
+    dispatchEmailNotification({
+      type: 'care_assessment',
+      trackingId: newTrackingId,
+      data: {
+        ...sanitizedData,
+        recommendedTier: recommendation.tier,
+        recommendedRole: recommendation.role
+      },
+      honeypot: answers.honeypot
+    });
 
     setSubmitted(true);
   };

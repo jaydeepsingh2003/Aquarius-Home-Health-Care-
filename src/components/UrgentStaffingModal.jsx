@@ -16,7 +16,8 @@ import {
   sanitizePhone,
   isBotHoneypotTriggered,
   securityRateLimiter, 
-  logSecurityAudit 
+  logSecurityAudit,
+  dispatchEmailNotification
 } from '../utils/security';
 
 export default function UrgentStaffingModal({ isOpen, onClose }) {
@@ -78,6 +79,14 @@ export default function UrgentStaffingModal({ isOpen, onClose }) {
 
     // 5. Ephemeral audit log
     logSecurityAudit('STAFFING_DISPATCH_REQUESTED', { trackingId: newTrackingId });
+
+    // 6. Secure SMTP Dispatch
+    dispatchEmailNotification({
+      type: 'urgent_staffing',
+      trackingId: newTrackingId,
+      data: sanitized,
+      honeypot: formData.honeypot
+    });
 
     setSubmitted(true);
   };

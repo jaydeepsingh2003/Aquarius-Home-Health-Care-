@@ -17,7 +17,8 @@ import {
   sanitizePhone,
   isBotHoneypotTriggered,
   securityRateLimiter, 
-  logSecurityAudit 
+  logSecurityAudit,
+  dispatchEmailNotification
 } from '../utils/security';
 
 export default function ContactSection() {
@@ -69,6 +70,14 @@ export default function ContactSection() {
     };
 
     logSecurityAudit('GENERAL_INQUIRY_SENT', { trackingId: newTrackingId });
+
+    // Secure SMTP Dispatch via Serverless API
+    dispatchEmailNotification({
+      type: 'contact',
+      trackingId: newTrackingId,
+      data: sanitized,
+      honeypot: formData.honeypot
+    });
 
     setSubmitted(true);
   };

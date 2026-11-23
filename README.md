@@ -108,6 +108,23 @@ Generates optimized, minified production assets in the `/dist` directory.
 
 ---
 
+## ✉️ Vercel SMTP Environment Configuration
+
+To enable automated email dispatches when clients submit shift requests, inquiries, or job applications, set the following environment variables in your **Vercel Dashboard** under `Project Settings > Environment Variables`:
+
+| Variable Name | Recommended Value | Notes |
+|---|---|---|
+| `SMTP_HOST` | `smtp.office365.com` | Microsoft 365 / GoDaddy Outlook SMTP server |
+| `SMTP_PORT` | `587` | Standard STARTTLS port |
+| `SMTP_SECURE` | `false` | Must be `false` for port 587 |
+| `SMTP_USER` | `raj.manvi@aimshealthcarecollege.com` | Authenticated email address |
+| `SMTP_PASS` | `YourPasswordHere` | Your Microsoft 365 password or App Password |
+| `NOTIFICATION_EMAIL` | `raj.manvi@aimshealthcarecollege.com` | Where intake notifications should be delivered |
+
+*Note: For accounts with Multi-Factor Authentication (MFA), generate a Microsoft App Password under your Microsoft Security Account settings.*
+
+---
+
 ## 📍 Headquarters & Dispatch Contact
 
 * **Organization:** Aquarius Home Health Care

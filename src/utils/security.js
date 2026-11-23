@@ -222,3 +222,37 @@ export function logSecurityAudit(action, details = {}) {
     // Fail silently in private/sandboxed browser environments
   }
 }
+
+/**
+ * Asynchronous SMTP Email Dispatcher Client
+ * Posts intake data to the Vercel /api/send-email serverless endpoint.
+ * Gracefully degrades if running offline or in standalone preview.
+ * @param {{ type: string, trackingId: string, data: object, honeypot?: string }} payload 
+ * @returns {Promise<{ success: boolean }>}
+ */
+export async function dispatchEmailNotification({ type, trackingId, data, honeypot = '' }) {
+  try {
+    const response = await fetch('/api/send-email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        type,
+        trackingId,
+        data,
+        honeypot
+      })
+    });
+
+    if (response.ok) {
+      const result = await response.json();
+      return result;
+    }
+    return { success: false, status: response.status };
+  } catch (err) {
+    // Graceful offline fallback (e.g. dev environment without serverless runner)
+    console.info('Client-side submission logged. Serverless endpoint unavailable in static preview.');
+    return { success: true, offline: true };
+  }
+}

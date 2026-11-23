@@ -18,7 +18,8 @@ import {
   sanitizePhone,
   isBotHoneypotTriggered,
   securityRateLimiter, 
-  logSecurityAudit 
+  logSecurityAudit,
+  dispatchEmailNotification
 } from '../utils/security';
 
 export default function CareersModal({ isOpen, onClose }) {
@@ -80,6 +81,15 @@ export default function CareersModal({ isOpen, onClose }) {
     };
 
     logSecurityAudit('CAREER_APPLICATION_SUBMITTED', { id: newId, role: sanitizedData.role });
+
+    // Secure SMTP Dispatch
+    dispatchEmailNotification({
+      type: 'career',
+      trackingId: newId,
+      data: sanitizedData,
+      honeypot: formData.honeypot
+    });
+
     setSubmitted(true);
   };
 

@@ -16,7 +16,8 @@ import {
   sanitizePhone,
   isBotHoneypotTriggered,
   securityRateLimiter, 
-  logSecurityAudit 
+  logSecurityAudit,
+  dispatchEmailNotification
 } from '../utils/security';
 
 export default function ConsultationModal({ isOpen, onClose }) {
@@ -72,6 +73,14 @@ export default function ConsultationModal({ isOpen, onClose }) {
     };
 
     logSecurityAudit('CONSULTATION_REQUESTED', { trackingId: newTrackingId });
+
+    // Secure SMTP Dispatch
+    dispatchEmailNotification({
+      type: 'consultation',
+      trackingId: newTrackingId,
+      data: sanitized,
+      honeypot: formData.honeypot
+    });
 
     setSubmitted(true);
   };
