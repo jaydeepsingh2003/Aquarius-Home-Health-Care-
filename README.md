@@ -117,9 +117,9 @@ To enable automated email dispatches when clients submit shift requests, inquiri
 | `SMTP_HOST` | `smtp.office365.com` | Microsoft 365 / GoDaddy Outlook SMTP server |
 | `SMTP_PORT` | `587` | Standard STARTTLS port |
 | `SMTP_SECURE` | `false` | Must be `false` for port 587 |
-| `SMTP_USER` | `raj.manvi@aimshealthcarecollege.com` | Authenticated email address |
+| `SMTP_USER` | `raj.manvi@aquariushomehealth.com` | Authenticated email address |
 | `SMTP_PASS` | `YourPasswordHere` | Your Microsoft 365 password or App Password |
-| `NOTIFICATION_EMAIL` | `raj.manvi@aimshealthcarecollege.com` | Where intake notifications should be delivered |
+| `NOTIFICATION_EMAIL` | `raj.manvi@aquariushomehealth.com` | Where intake notifications should be delivered |
 
 *Note: For accounts with Multi-Factor Authentication (MFA), generate a Microsoft App Password under your Microsoft Security Account settings.*
 
@@ -130,5 +130,5 @@ To enable automated email dispatches when clients submit shift requests, inquiri
 * **Organization:** Aquarius Home Health Care
 * **Operational Address:** 800 Queenston Rd, Unit 309, Stoney Creek, ON L8G-1A7
 * **24/7 Dispatch Phone:** (905) 525-5111
-* **Email:** scheduling@aquariushomehealth.com
+* **Email:** raj.manvi@aquariushomehealth.com
 * **Regulatory Compliance:** College of Nurses of Ontario (CNO) standards, Ontario Ministry of Health, PHIPA & PIPEDA

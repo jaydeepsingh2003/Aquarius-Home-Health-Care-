@@ -12,7 +12,7 @@ export const COMPANY_INFO = {
   },
   phone: "(905) 525-5111",
   phoneRaw: "9055255111",
-  email: "scheduling@aquariushomehealth.com",
+  email: "raj.manvi@aquariushomehealth.com",
   dispatchHours: "24/7 / 365 Days a Year",
   officeHours: "Monday – Friday: 8:00 AM – 6:00 PM (Emergency Dispatch: 24/7)"
 };

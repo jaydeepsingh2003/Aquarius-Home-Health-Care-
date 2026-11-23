@@ -32,7 +32,7 @@ export default async function handler(req, res) {
     // SMTP Configuration from Vercel Environment Variables
     const smtpHost = process.env.SMTP_HOST || 'smtp.office365.com';
     const smtpPort = Number(process.env.SMTP_PORT) || 587;
-    const smtpUser = process.env.SMTP_USER || 'raj.manvi@aimshealthcarecollege.com';
+    const smtpUser = process.env.SMTP_USER || 'raj.manvi@aquariushomehealth.com';
     const smtpPass = process.env.SMTP_PASS;
     const notificationEmail = process.env.NOTIFICATION_EMAIL || smtpUser;
 
