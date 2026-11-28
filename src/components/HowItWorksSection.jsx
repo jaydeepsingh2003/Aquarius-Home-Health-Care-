@@ -1,14 +1,9 @@
 import React, { useState } from 'react';
 import { 
-  ClipboardCheck, 
-  UserCheck2, 
-  HeartHandshake, 
-  PhoneCall, 
-  Zap, 
-  CheckCircle,
-  Home,
-  Building2,
-  ArrowRight
+  Home, 
+  Building2, 
+  ArrowRight,
+  CheckCircle2
 } from 'lucide-react';
 
 export default function HowItWorksSection({ onOpenConsultationModal, onOpenStaffingModal }) {
@@ -17,21 +12,21 @@ export default function HowItWorksSection({ onOpenConsultationModal, onOpenStaff
   const familySteps = [
     {
       step: '01',
-      title: 'Free In-Home Assessment',
-      desc: 'Our clinical supervisor visits your home to review medical background, fall risks, daily routines, and family goals.',
-      highlight: 'Zero obligation'
+      title: 'Tell Us Your Needs',
+      desc: 'Request a free call or submit your custom care mix. Share personal care, companionship, memory support, or clinical nursing requirements.',
+      highlight: 'Zero Obligation'
     },
     {
       step: '02',
-      title: 'Care Plan & Caregiver Matching',
-      desc: 'We match a certified PSW, RPN, or RN whose personality, clinical experience, and schedule fit your loved one seamlessly.',
-      highlight: 'Matched for Compatibility'
+      title: 'Custom Care Plan & Match',
+      desc: 'Our clinical supervisor conducts a comprehensive evaluation and proposes hours, schedules, and a language-matched PSW, RPN, or RN.',
+      highlight: 'Personal Compatibility'
     },
     {
       step: '03',
-      title: 'Continuous Compassionate Care',
-      desc: 'Care begins with regular clinical oversight, transparent family communication, and flexible scheduling adjustments as needed.',
-      highlight: '24/7 Peace of Mind'
+      title: 'Care Begins Quickly',
+      desc: 'In-home support often begins within 24–48 hours with consistent routine oversight, proactive observation, and 24/7 coordinator check-ins.',
+      highlight: '24–48 Hr Start'
     }
   ];
 
@@ -39,19 +34,19 @@ export default function HowItWorksSection({ onOpenConsultationModal, onOpenStaff
     {
       step: '01',
       title: 'Submit Shift Request',
-      desc: 'Call (905) 525-5111 or use our instant staffing portal. Specify unit, shift time, and role needed (PSW, RPN, RN).',
+      desc: 'Call (905) 525-5111 or submit our intake form 24/7. Specify unit type, shift timing, and required credentials (PSW, RPN, or RN).',
       highlight: '24/7 Live Desk'
     },
     {
       step: '02',
-      title: 'Instant Credential Verification',
-      desc: 'We dispatch pre-screened, CNO-active, and vulnerable sector cleared personnel with confirmation in under 15 minutes.',
-      highlight: '< 15 Min Turnaround'
+      title: 'Instant Credential Audit',
+      desc: 'Our dispatch desk matches pre-screened, CNO-active, and Police Vulnerable Sector cleared staff with confirmation in under 15 minutes.',
+      highlight: '< 15 Min Confirmation'
     },
     {
       step: '03',
       title: 'Seamless Floor Readiness',
-      desc: 'Our staff arrives on time with photo ID, ready to report to the charge nurse and maintain proper patient ratios.',
+      desc: 'Credentialed staff arrive on time with photo ID, ready to report to the charge nurse and maintain compliant patient-to-staff ratios.',
       highlight: 'Immediate Readiness'
     }
   ];
@@ -59,30 +54,30 @@ export default function HowItWorksSection({ onOpenConsultationModal, onOpenStaff
   const steps = activeTab === 'families' ? familySteps : facilitySteps;
 
   return (
-    <section className="py-16 sm:py-20 bg-slate-50/70 border-b border-slate-200/80">
+    <section className="py-16 sm:py-20 bg-gradient-to-b from-slate-50 to-white border-b border-slate-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
-          <span className="text-xs font-bold uppercase tracking-wider text-brand-blue mb-2 block">
-            How Care Begins
+        <div className="text-center max-w-2xl mx-auto mb-9 sm:mb-11">
+          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-50 text-brand-blue border border-blue-100 mb-3">
+            Simple Onboarding
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight">
-            How Our Care & Staffing Works
+            How Care & Staffing Begins
           </h2>
-          <p className="mt-2.5 text-xs sm:text-sm text-slate-600 text-justify sm:text-center">
-            A structured 3-step onboarding experience—starting home care within 24–48 hours and confirming urgent facility shifts in under 15 minutes.
+          <p className="mt-2.5 text-xs sm:text-sm text-slate-600 text-justify sm:text-center leading-relaxed">
+            A clear 3-step onboarding process—starting private in-home care within 24–48 hours and confirming urgent facility shifts in under 15 minutes.
           </p>
         </div>
 
         {/* Tab Switcher */}
-        <div className="flex justify-center mb-10">
-          <div className="inline-flex p-1 bg-slate-100 rounded-2xl border border-slate-200">
+        <div className="flex justify-center mb-12">
+          <div className="inline-flex p-1.5 bg-slate-100 rounded-full border border-slate-200/80 shadow-2xs">
             <button
               onClick={() => setActiveTab('families')}
-              className={`py-2 px-5 rounded-xl font-bold text-xs sm:text-sm transition flex items-center gap-2 ${
+              className={`py-2 px-5 sm:px-6 rounded-full font-bold text-xs sm:text-sm transition-all flex items-center gap-2 ${
                 activeTab === 'families'
-                  ? 'bg-white text-brand-navy shadow-xs'
+                  ? 'bg-brand-navy text-white shadow-xs'
                   : 'text-slate-600 hover:text-brand-navy'
               }`}
             >
@@ -92,9 +87,9 @@ export default function HowItWorksSection({ onOpenConsultationModal, onOpenStaff
 
             <button
               onClick={() => setActiveTab('facilities')}
-              className={`py-2 px-5 rounded-xl font-bold text-xs sm:text-sm transition flex items-center gap-2 ${
+              className={`py-2 px-5 sm:px-6 rounded-full font-bold text-xs sm:text-sm transition-all flex items-center gap-2 ${
                 activeTab === 'facilities'
-                  ? 'bg-white text-brand-navy shadow-xs'
+                  ? 'bg-brand-teal text-white shadow-xs'
                   : 'text-slate-600 hover:text-brand-navy'
               }`}
             >
@@ -104,37 +99,50 @@ export default function HowItWorksSection({ onOpenConsultationModal, onOpenStaff
           </div>
         </div>
 
-        {/* 3 Step Process Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          {steps.map((item, idx) => (
-            <div 
-              key={idx}
-              className="bg-brand-surface rounded-2xl p-6 sm:p-7 border border-slate-200/80 shadow-2xs flex flex-col justify-between"
-            >
-              <div>
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-2xl font-black text-brand-blue">
-                    {item.step}
-                  </span>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 bg-white px-2 py-0.5 rounded border border-slate-200">
-                    {item.highlight}
-                  </span>
+        {/* 3 Step Process Grid with Visual Desktop Timeline Connector */}
+        <div className="relative max-w-6xl mx-auto">
+          {/* Desktop Horizontal Connecting Line */}
+          <div className="hidden md:block absolute top-11 left-[16%] right-[16%] h-0.5 bg-gradient-to-r from-brand-blue/30 via-brand-teal/40 to-brand-blue/30" aria-hidden="true" />
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {steps.map((item, idx) => (
+              <div 
+                key={idx}
+                className="relative bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/90 shadow-subtle hover:shadow-premium transition-all flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-5">
+                    <div className="w-12 h-12 rounded-2xl bg-brand-navy text-white font-black text-base flex items-center justify-center shadow-xs relative z-10">
+                      {item.step}
+                    </div>
+                    <span className="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-brand-teal bg-teal-50 px-2.5 py-1 rounded-full border border-teal-100">
+                      <CheckCircle2 className="w-3 h-3" />
+                      <span>{item.highlight}</span>
+                    </span>
+                  </div>
+
+                  <h3 className="text-base sm:text-lg font-extrabold text-brand-navy">
+                    {item.title}
+                  </h3>
+
+                  <p className="mt-2.5 text-xs sm:text-sm text-slate-600 leading-relaxed text-justify">
+                    {item.desc}
+                  </p>
                 </div>
 
-                <h3 className="text-base font-bold text-brand-navy">
-                  {item.title}
-                </h3>
-
-                <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed text-justify">
-                  {item.desc}
-                </p>
+                <div className="mt-6 pt-3.5 border-t border-slate-100 flex items-center justify-between text-[11px] font-bold text-slate-400">
+                  <span>STEP {idx + 1} OF 3</span>
+                  <button
+                    onClick={activeTab === 'families' ? onOpenConsultationModal : onOpenStaffingModal}
+                    className="text-brand-blue hover:underline inline-flex items-center gap-1"
+                  >
+                    <span>Start Now</span>
+                    <ArrowRight className="w-3 h-3" />
+                  </button>
+                </div>
               </div>
-
-              <div className="mt-5 pt-3 border-t border-slate-200/60 text-[11px] font-medium text-slate-400">
-                Step {idx + 1} of 3
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
       </div>

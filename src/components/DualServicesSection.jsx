@@ -136,13 +136,13 @@ export default function DualServicesSection({
 
         {/* Tab Toggle */}
         <div className="flex justify-center mb-10">
-          <div className="inline-flex p-1 bg-slate-100 rounded-2xl border border-slate-200/80 w-full max-w-sm sm:w-auto">
+          <div className="inline-flex p-1.5 bg-slate-100 rounded-full border border-slate-200/80 w-full max-w-sm sm:w-auto">
             <button
               onClick={() => setCurrentTab('families')}
-              className={`flex-1 sm:flex-none py-2 px-5 rounded-xl font-bold text-xs sm:text-sm transition flex items-center justify-center gap-2 ${
+              className={`flex-1 sm:flex-none py-2 px-5 rounded-full font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 ${
                 currentTab === 'families'
-                  ? 'bg-white text-brand-navy shadow-xs'
-                  : 'text-slate-500 hover:text-brand-navy'
+                  ? 'bg-brand-navy text-white shadow-xs'
+                  : 'text-slate-600 hover:text-brand-navy'
               }`}
             >
               <Home className="w-3.5 h-3.5" />
@@ -151,10 +151,10 @@ export default function DualServicesSection({
 
             <button
               onClick={() => setCurrentTab('facilities')}
-              className={`flex-1 sm:flex-none py-2 px-5 rounded-xl font-bold text-xs sm:text-sm transition flex items-center justify-center gap-2 ${
+              className={`flex-1 sm:flex-none py-2 px-5 rounded-full font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 ${
                 currentTab === 'facilities'
-                  ? 'bg-white text-brand-navy shadow-xs'
-                  : 'text-slate-500 hover:text-brand-navy'
+                  ? 'bg-brand-teal text-white shadow-xs'
+                  : 'text-slate-600 hover:text-brand-navy'
               }`}
             >
               <Building2 className="w-3.5 h-3.5" />
@@ -168,34 +168,35 @@ export default function DualServicesSection({
           {currentList.map((srv, idx) => (
             <div
               key={idx}
-              className="bg-brand-surface rounded-2xl p-5 border border-slate-200/80 shadow-2xs hover:shadow-subtle transition flex flex-col justify-between overflow-hidden"
+              className="bg-brand-surface rounded-3xl p-6 border border-slate-200/90 shadow-subtle hover:shadow-premium transition-all flex flex-col justify-between overflow-hidden group"
             >
               <div>
                 {/* Service Card Photography */}
-                <div className="relative h-44 w-full rounded-xl overflow-hidden mb-4 bg-slate-100 border border-slate-200/70">
+                <div className="relative h-48 w-full rounded-2xl overflow-hidden mb-5 bg-slate-100 border border-slate-200/70">
                   <img 
                     src={srv.image} 
                     alt={srv.title} 
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     loading="lazy"
                   />
-                  <span className="absolute top-2.5 left-2.5 text-[10px] font-bold text-brand-navy bg-white/95 backdrop-blur-sm px-2 py-0.5 rounded-md shadow-2xs border border-slate-200/60">
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/45 via-transparent to-transparent" />
+                  <span className="absolute top-3 left-3 text-[10px] font-bold text-brand-navy bg-white/95 backdrop-blur-sm px-2.5 py-1 rounded-full shadow-xs border border-slate-200/70">
                     {srv.badge}
                   </span>
                 </div>
 
-                <div className="flex items-center justify-between mb-1">
-                  <h3 className="text-base font-bold text-brand-navy">
+                <div className="flex items-center justify-between mb-1.5">
+                  <h3 className="text-base sm:text-lg font-extrabold text-brand-navy">
                     {srv.title}
                   </h3>
-                  <span className="text-xs font-semibold text-slate-400">0{idx + 1}</span>
+                  <span className="text-xs font-bold text-slate-400">0{idx + 1}</span>
                 </div>
 
-                <p className="mt-2 text-xs text-slate-600 leading-relaxed text-justify">
+                <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed text-justify">
                   {srv.desc}
                 </p>
 
-                <div className="mt-4 pt-3 border-t border-slate-200/60 space-y-2">
+                <div className="mt-4 pt-4 border-t border-slate-200/70 space-y-2">
                   {srv.items.map((item, iIdx) => (
                     <div key={iIdx} className="flex items-start gap-2 text-xs text-slate-700">
                       <Check className="w-3.5 h-3.5 text-brand-teal flex-shrink-0 mt-0.5 stroke-[2.5]" />
@@ -205,13 +206,13 @@ export default function DualServicesSection({
                 </div>
               </div>
 
-              <div className="mt-5 pt-3 border-t border-slate-200/60">
+              <div className="mt-6 pt-4 border-t border-slate-200/70">
                 <button
                   onClick={currentTab === 'families' ? onOpenConsultationModal : onOpenStaffingModal}
-                  className="w-full py-2.5 px-3 rounded-xl bg-white hover:bg-slate-50 text-brand-navy border border-slate-200 font-bold text-xs transition flex items-center justify-center gap-1.5"
+                  className="w-full py-2.5 px-4 rounded-full bg-white hover:bg-brand-navy text-brand-navy hover:text-white border border-slate-200 hover:border-brand-navy font-bold text-xs transition-all flex items-center justify-center gap-1.5"
                 >
                   <span>{currentTab === 'families' ? 'Inquire for Home Care' : 'Book Shift Coverage'}</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-brand-blue" />
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </div>
             </div>
@@ -251,25 +252,25 @@ export default function DualServicesSection({
             </div>
           </div>
 
-          {/* Selected Care Mix Action Tray */}
+          {/* Selected Care Mix Dark Oxford Navy Action Tray */}
           {selectedCareMix.length > 0 && (
-            <div className="mb-6 p-4 rounded-2xl bg-blue-50/80 border border-blue-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-4 animate-fadeIn">
-              <div className="space-y-2">
-                <div className="flex items-center gap-2 text-xs font-bold text-brand-navy">
-                  <CheckCircle2 className="w-4 h-4 text-brand-blue" />
-                  <span>Your Custom Care Mix ({selectedCareMix.length} selected):</span>
+            <div className="mb-6 p-5 rounded-3xl bg-brand-navy text-white border border-slate-800 shadow-elevated flex flex-col sm:flex-row sm:items-center justify-between gap-4 animate-fadeIn">
+              <div className="space-y-2.5">
+                <div className="flex items-center gap-2 text-xs font-bold text-teal-300">
+                  <CheckCircle2 className="w-4 h-4 text-teal-400" />
+                  <span>Your Custom Care Plan Mix ({selectedCareMix.length} selected):</span>
                 </div>
                 <div className="flex flex-wrap gap-1.5">
                   {selectedCareMix.map((title) => (
                     <span
                       key={title}
-                      className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white border border-blue-200 text-[11px] font-semibold text-brand-navy"
+                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-[11px] font-semibold text-white"
                     >
                       <span>{title}</span>
                       <button
                         type="button"
                         onClick={() => toggleCareService(title)}
-                        className="text-slate-400 hover:text-rose-600"
+                        className="text-slate-300 hover:text-rose-300"
                         aria-label={`Remove ${title}`}
                       >
                         <X className="w-3 h-3" />
@@ -287,7 +288,7 @@ export default function DualServicesSection({
                     onOpenConsultationModal();
                   }
                 }}
-                className="px-5 py-2.5 rounded-full bg-brand-blue hover:bg-blue-700 text-white font-bold text-xs shadow-xs transition flex items-center justify-center gap-2 flex-shrink-0"
+                className="px-6 py-3 rounded-full bg-brand-blue hover:bg-blue-600 text-white font-bold text-xs shadow-sm transition flex items-center justify-center gap-2 flex-shrink-0"
               >
                 <Calendar className="w-3.5 h-3.5" />
                 <span>Book Consultation with This Plan</span>

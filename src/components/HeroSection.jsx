@@ -5,8 +5,8 @@ import {
   Building2, 
   Home, 
   Check, 
-  Sparkles,
-  ShieldCheck
+  ShieldCheck,
+  ClipboardList
 } from 'lucide-react';
 import { COMPANY_INFO, TRUST_STATS } from '../data/healthcareData';
 
@@ -20,106 +20,111 @@ export default function HeroSection({
   const isFamily = activeAudience === 'families';
 
   return (
-    <section id="home" className="scroll-mt-28 bg-white pt-8 pb-14 sm:pt-12 sm:pb-20 border-b border-slate-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="home" className="scroll-mt-28 relative overflow-hidden bg-gradient-to-b from-[#F0F6FF] via-white to-white pt-7 pb-14 sm:pt-12 sm:pb-20 border-b border-slate-200/70">
+      
+      {/* Subtle Ambient Healthcare Radial Accents */}
+      <div className="pointer-events-none absolute -top-24 -right-24 w-96 h-96 rounded-full bg-blue-100/50 blur-3xl" aria-hidden="true" />
+      <div className="pointer-events-none absolute top-1/3 -left-24 w-80 h-80 rounded-full bg-teal-100/40 blur-3xl" aria-hidden="true" />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Luxury Segmented Switcher */}
-        <div className="flex justify-center mb-6 sm:mb-8">
-          <div className="inline-flex p-1 bg-slate-100/90 rounded-2xl border border-slate-200/80 shadow-2xs w-full max-w-sm sm:w-auto">
+        {/* Executive Segmented Audience Switcher */}
+        <div className="flex justify-center mb-7 sm:mb-9">
+          <div className="inline-flex p-1.5 bg-white rounded-full border border-slate-200/90 shadow-subtle w-full max-w-sm sm:w-auto">
             <button
               onClick={() => setActiveAudience('families')}
-              className={`flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition ${
+              className={`flex-1 sm:flex-none flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 rounded-full font-bold text-xs sm:text-sm transition-all ${
                 isFamily
-                  ? 'bg-white text-brand-navy shadow-xs'
-                  : 'text-slate-500 hover:text-brand-navy'
+                  ? 'bg-brand-navy text-white shadow-xs'
+                  : 'text-slate-600 hover:text-brand-navy'
               }`}
             >
-              <Home className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${isFamily ? 'text-brand-blue' : 'text-slate-400'}`} />
+              <Home className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${isFamily ? 'text-blue-300' : 'text-slate-400'}`} />
               <span>For Families</span>
             </button>
 
             <button
               onClick={() => setActiveAudience('facilities')}
-              className={`flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition ${
+              className={`flex-1 sm:flex-none flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 rounded-full font-bold text-xs sm:text-sm transition-all ${
                 !isFamily
-                  ? 'bg-white text-brand-navy shadow-xs'
-                  : 'text-slate-500 hover:text-brand-navy'
+                  ? 'bg-brand-teal text-white shadow-xs'
+                  : 'text-slate-600 hover:text-brand-navy'
               }`}
             >
-              <Building2 className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${!isFamily ? 'text-brand-teal' : 'text-slate-400'}`} />
+              <Building2 className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${!isFamily ? 'text-teal-100' : 'text-slate-400'}`} />
               <span>For Facilities</span>
             </button>
           </div>
         </div>
 
         {/* Main Hero Split */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
           {/* Left Column: Authoritative Copy */}
           <div className="lg:col-span-7 text-center lg:text-left">
             
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-xs font-semibold mb-4">
-              <span className="w-1.5 h-1.5 rounded-full bg-brand-blue"></span>
-              <span>Stoney Creek & Greater Hamilton Area</span>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200/90 shadow-2xs text-brand-navy text-xs font-semibold mb-5">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              <span>Stoney Creek & Greater Hamilton Area • Est. 2016</span>
             </div>
 
             {/* Headline */}
             {isFamily ? (
-              <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-brand-navy tracking-tight leading-[1.18] sm:leading-[1.15]">
+              <h1 className="text-3xl sm:text-4xl lg:text-[3.15rem] font-extrabold text-brand-navy tracking-tight leading-[1.14]">
                 Dignified, Compassionate <br className="hidden sm:inline" />
-                In-Home Healthcare.
+                <span className="text-brand-blue">In-Home Healthcare.</span>
               </h1>
             ) : (
-              <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-brand-navy tracking-tight leading-[1.18] sm:leading-[1.15]">
+              <h1 className="text-3xl sm:text-4xl lg:text-[3.15rem] font-extrabold text-brand-navy tracking-tight leading-[1.14]">
                 Reliable 24/7 Clinical Staffing <br className="hidden sm:inline" />
-                for Healthcare Facilities.
+                <span className="text-brand-teal">for Healthcare Facilities.</span>
               </h1>
             )}
 
             {/* Justified Description */}
-            <p className="mt-4 text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed text-justify max-w-2xl mx-auto lg:mx-0">
+            <p className="mt-5 text-sm sm:text-base md:text-[17px] text-slate-600 leading-relaxed text-justify max-w-2xl mx-auto lg:mx-0">
               {isFamily ? (
                 <>
                   Since 2016, <strong>Aquarius Home Health Care</strong> has delivered personalized, certified nursing and personal support where it matters most—in the comfort of home. Supporting independence while giving families complete peace of mind.
                 </>
               ) : (
                 <>
-                  Built on clinical rigor and rapid responsiveness, we ensure hospitals, clinics, and long-term care homes never compromise on patient care due to sudden sick calls, vacancies, or patient surges.
+                  Built on clinical rigor and rapid responsiveness, we ensure hospitals, clinics, and long-term care homes never compromise on patient care due to sudden sick calls, staffing vacancies, or seasonal patient surges.
                 </>
               )}
             </p>
 
-            {/* Clean, Perfectly Aligned Verification Checklist */}
+            {/* Clean, Aligned Verification Checklist */}
             <div className="mt-6 flex justify-center lg:justify-start">
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2.5 sm:gap-6 text-xs font-semibold text-slate-700 bg-slate-50 sm:bg-transparent px-4 py-3 sm:p-0 rounded-2xl border border-slate-200/60 sm:border-0 w-full sm:w-auto max-w-sm sm:max-w-none">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6 text-xs font-semibold text-slate-700 bg-white sm:bg-transparent px-4 py-3.5 sm:p-0 rounded-2xl border border-slate-200/80 sm:border-0 shadow-2xs sm:shadow-none w-full sm:w-auto max-w-sm sm:max-w-none">
                 <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 rounded-full bg-teal-50 text-brand-teal flex items-center justify-center flex-shrink-0">
-                    <Check className="w-2.5 h-2.5 stroke-[3]" />
+                  <div className="w-5 h-5 rounded-full bg-teal-50 border border-teal-100 text-brand-teal flex items-center justify-center flex-shrink-0">
+                    <Check className="w-3 h-3 stroke-[3]" />
                   </div>
                   <span>Police Vulnerable Sector Screened</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 rounded-full bg-teal-50 text-brand-teal flex items-center justify-center flex-shrink-0">
-                    <Check className="w-2.5 h-2.5 stroke-[3]" />
+                  <div className="w-5 h-5 rounded-full bg-blue-50 border border-blue-100 text-brand-blue flex items-center justify-center flex-shrink-0">
+                    <Check className="w-3 h-3 stroke-[3]" />
                   </div>
                   <span>CNO Active Licensing Verified</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 rounded-full bg-teal-50 text-brand-teal flex items-center justify-center flex-shrink-0">
-                    <Check className="w-2.5 h-2.5 stroke-[3]" />
+                  <div className="w-5 h-5 rounded-full bg-amber-50 border border-amber-100 text-brand-amber flex items-center justify-center flex-shrink-0">
+                    <Check className="w-3 h-3 stroke-[3]" />
                   </div>
                   <span>24/7 Rapid Dispatch</span>
                 </div>
               </div>
             </div>
 
-            {/* Clean Action Buttons */}
-            <div className="mt-7 flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3">
+            {/* Primary Pill Action Buttons */}
+            <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3">
               {isFamily ? (
                 <>
                   <button
                     onClick={onOpenConsultationModal}
-                    className="px-6 py-3.5 rounded-xl bg-brand-blue hover:bg-blue-700 text-white font-bold text-sm shadow-xs transition flex items-center justify-center gap-2"
+                    className="px-7 py-3.5 rounded-full bg-brand-blue hover:bg-blue-700 text-white font-bold text-sm shadow-premium hover:shadow-elevated transition-all flex items-center justify-center gap-2 active:scale-[0.98]"
                   >
                     <span>Book Free Consultation</span>
                     <ArrowRight className="w-4 h-4" />
@@ -127,17 +132,17 @@ export default function HeroSection({
 
                   <button
                     onClick={onScrollToWizard}
-                    className="px-5 py-3.5 rounded-xl bg-white hover:bg-slate-50 text-brand-navy border border-slate-200 font-semibold text-sm transition flex items-center justify-center gap-2"
+                    className="px-6 py-3.5 rounded-full bg-white hover:bg-slate-50 text-brand-navy border border-slate-200 font-bold text-sm shadow-subtle transition-all flex items-center justify-center gap-2"
                   >
-                    <Sparkles className="w-4 h-4 text-brand-blue" />
-                    <span>Take 60-Sec Care Matcher</span>
+                    <ClipboardList className="w-4 h-4 text-brand-blue" />
+                    <span>60-Sec Care Assessment</span>
                   </button>
                 </>
               ) : (
                 <>
                   <button
                     onClick={onOpenStaffingModal}
-                    className="px-6 py-3.5 rounded-xl bg-brand-teal hover:bg-teal-800 text-white font-bold text-sm shadow-xs transition flex items-center justify-center gap-2"
+                    className="px-7 py-3.5 rounded-full bg-brand-teal hover:bg-teal-800 text-white font-bold text-sm shadow-premium hover:shadow-elevated transition-all flex items-center justify-center gap-2 active:scale-[0.98]"
                   >
                     <span>Request Urgent Shift Coverage</span>
                     <ArrowRight className="w-4 h-4" />
@@ -145,7 +150,7 @@ export default function HeroSection({
 
                   <a
                     href={`tel:${COMPANY_INFO.phoneRaw}`}
-                    className="px-5 py-3.5 rounded-xl bg-white hover:bg-slate-50 text-brand-navy border border-slate-200 font-semibold text-sm transition flex items-center justify-center gap-2"
+                    className="px-6 py-3.5 rounded-full bg-white hover:bg-slate-50 text-brand-navy border border-slate-200 font-bold text-sm shadow-subtle transition-all flex items-center justify-center gap-2"
                   >
                     <PhoneCall className="w-4 h-4 text-brand-blue" />
                     <span>Call (905) 525-5111</span>
@@ -156,69 +161,73 @@ export default function HeroSection({
 
           </div>
 
-          {/* Right Column: Clean Clinical Image & Summary Card */}
+          {/* Right Column: Elevated Clinical Image & Tier Summary Card */}
           <div className="lg:col-span-5">
-            <div className="bg-brand-surface rounded-3xl p-4 sm:p-6 border border-slate-200/80 shadow-subtle overflow-hidden">
+            <div className="bg-white rounded-3xl p-4 sm:p-6 border border-slate-200/90 shadow-elevated overflow-hidden">
               
               {/* High-Resolution Hero Visual */}
-              <div className="relative rounded-2xl overflow-hidden mb-4 shadow-xs aspect-[16/10] bg-slate-100">
+              <div className="relative rounded-2xl overflow-hidden mb-5 shadow-xs aspect-[16/10] bg-slate-100">
                 <img 
                   src="/images/hero-homecare.jpg" 
                   alt="Aquarius Home Health Care nurse providing compassionate bedside care to an elderly senior at home" 
                   className="w-full h-full object-cover"
                   loading="eager"
                 />
-                <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-md px-2.5 py-1 rounded-full border border-slate-200/80 text-[10px] font-bold text-brand-navy shadow-2xs flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/50 via-transparent to-transparent" />
+                <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full border border-slate-200/80 text-[10px] font-bold text-brand-navy shadow-xs flex items-center gap-1.5">
+                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
                   <span>CNO & PVSS Verified Staff</span>
                 </div>
 
-                <div className="absolute bottom-3 right-3 bg-brand-navy/90 backdrop-blur-md px-2.5 py-1 rounded-lg text-white text-[10px] font-bold shadow-xs">
-                  Est. 2016 • Stoney Creek, ON
+                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white text-[11px] font-bold">
+                  <span className="bg-brand-navy/85 backdrop-blur-md px-2.5 py-1 rounded-lg">
+                    Est. 2016 • Stoney Creek, ON
+                  </span>
+                  <span className="bg-emerald-600/90 backdrop-blur-md px-2.5 py-1 rounded-lg">
+                    24/7 Active
+                  </span>
                 </div>
               </div>
 
               {/* 3 Staff Tiers */}
-              <div className="space-y-2">
-                
-                <div className="p-2.5 sm:p-3 bg-white rounded-xl border border-slate-200/70">
+              <div className="space-y-2.5">
+                <div className="p-3 bg-slate-50/80 hover:bg-blue-50/40 rounded-2xl border border-slate-200/70 transition">
                   <div className="flex items-center justify-between">
                     <span className="font-bold text-xs sm:text-sm text-brand-navy">Personal Support Workers (PSW)</span>
-                    <span className="text-[10px] font-bold text-brand-blue bg-blue-50 px-2 py-0.5 rounded">ADLs</span>
+                    <span className="text-[10px] font-bold text-brand-blue bg-blue-50 border border-blue-100 px-2 py-0.5 rounded-full">ADLs</span>
                   </div>
-                  <p className="text-[11px] sm:text-xs text-slate-500 mt-0.5 text-justify">
+                  <p className="text-[11px] sm:text-xs text-slate-600 mt-1 text-justify">
                     Personal hygiene, safe transfers, meal assistance, and companionship.
                   </p>
                 </div>
 
-                <div className="p-2.5 sm:p-3 bg-white rounded-xl border border-slate-200/70">
+                <div className="p-3 bg-slate-50/80 hover:bg-teal-50/40 rounded-2xl border border-slate-200/70 transition">
                   <div className="flex items-center justify-between">
                     <span className="font-bold text-xs sm:text-sm text-brand-navy">Registered Practical Nurses (RPN)</span>
-                    <span className="text-[10px] font-bold text-brand-teal bg-teal-50 px-2 py-0.5 rounded">CNO Licensed</span>
+                    <span className="text-[10px] font-bold text-brand-teal bg-teal-50 border border-teal-100 px-2 py-0.5 rounded-full">CNO Licensed</span>
                   </div>
-                  <p className="text-[11px] sm:text-xs text-slate-500 mt-0.5 text-justify">
+                  <p className="text-[11px] sm:text-xs text-slate-600 mt-1 text-justify">
                     Wound dressings, subcutaneous injections, catheter care, and vital monitoring.
                   </p>
                 </div>
 
-                <div className="p-2.5 sm:p-3 bg-white rounded-xl border border-slate-200/70">
+                <div className="p-3 bg-slate-50/80 hover:bg-slate-100/70 rounded-2xl border border-slate-200/70 transition">
                   <div className="flex items-center justify-between">
                     <span className="font-bold text-xs sm:text-sm text-brand-navy">Registered Nurses (RN)</span>
-                    <span className="text-[10px] font-bold text-slate-700 bg-slate-100 px-2 py-0.5 rounded">Acute Care</span>
+                    <span className="text-[10px] font-bold text-brand-navy bg-white border border-slate-200 px-2 py-0.5 rounded-full">Acute Care</span>
                   </div>
-                  <p className="text-[11px] sm:text-xs text-slate-500 mt-0.5 text-justify">
+                  <p className="text-[11px] sm:text-xs text-slate-600 mt-1 text-justify">
                     Complex assessment, IV therapy, palliative comfort, and unit leadership.
                   </p>
                 </div>
-
               </div>
 
               {/* Quick direct line inside card */}
-              <div className="mt-3.5 pt-3 border-t border-slate-200/70 flex items-center justify-between text-xs">
-                <span className="text-slate-500">24/7 Dispatch Desk:</span>
+              <div className="mt-4 pt-3.5 border-t border-slate-100 flex items-center justify-between text-xs">
+                <span className="text-slate-500 font-medium">24/7 Live Dispatch Desk:</span>
                 <a 
                   href={`tel:${COMPANY_INFO.phoneRaw}`} 
-                  className="font-bold text-brand-navy hover:text-brand-blue transition"
+                  className="font-extrabold text-brand-blue hover:text-brand-navy transition"
                 >
                   (905) 525-5111
                 </a>
@@ -229,21 +238,23 @@ export default function HeroSection({
 
         </div>
 
-        {/* 4 Clean Stats Strip */}
-        <div className="mt-12 pt-8 border-t border-slate-100 grid grid-cols-2 lg:grid-cols-4 gap-4 text-center">
-          {TRUST_STATS.map((stat, idx) => (
-            <div key={idx} className="p-2">
-              <div className="text-2xl sm:text-3xl font-extrabold text-brand-navy tracking-tight">
-                {stat.value}
+        {/* High-Contrast Dark Oxford Navy Stats Ribbon (Inspired by Trillium Med Village) */}
+        <div className="mt-12 sm:mt-14 bg-gradient-to-r from-brand-navy via-brand-navy-light to-brand-navy rounded-3xl p-6 sm:p-8 text-white shadow-elevated border border-slate-800">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 text-center divide-y-0 lg:divide-x divide-white/10">
+            {TRUST_STATS.map((stat, idx) => (
+              <div key={idx} className="px-2">
+                <div className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+                  {stat.value}
+                </div>
+                <div className="text-xs font-bold text-teal-300 uppercase tracking-wider mt-1">
+                  {stat.label}
+                </div>
+                <div className="text-[11px] text-slate-300 mt-1">
+                  {stat.sub}
+                </div>
               </div>
-              <div className="text-xs font-bold text-brand-blue mt-0.5">
-                {stat.label}
-              </div>
-              <div className="text-[11px] text-slate-500 mt-0.5">
-                {stat.sub}
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
       </div>

@@ -73,39 +73,39 @@ export default function PillarsSection() {
 
         {/* Mission, Vision & Multilingual Heritage Band (Inspired by Trillium Med Village) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-10">
-          <div className="lg:col-span-5 bg-white rounded-2xl p-6 border border-slate-200/80 shadow-2xs flex flex-col justify-between">
+          <div className="lg:col-span-5 bg-gradient-to-br from-[#F0F6FF] to-white rounded-3xl p-6 sm:p-7 border border-blue-100/90 shadow-subtle flex flex-col justify-between">
             <div>
               <div className="flex items-center gap-2.5 mb-3">
-                <div className="w-8 h-8 rounded-lg bg-blue-50 text-brand-blue flex items-center justify-center">
-                  <Compass className="w-4 h-4" />
+                <div className="w-9 h-9 rounded-xl bg-brand-blue text-white flex items-center justify-center shadow-xs">
+                  <Compass className="w-4.5 h-4.5" />
                 </div>
                 <h3 className="text-sm font-extrabold text-brand-navy uppercase tracking-wider">
                   Our Mission
                 </h3>
               </div>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed text-justify">
+              <p className="text-xs sm:text-sm text-slate-700 leading-relaxed text-justify">
                 {MISSION_VISION.mission}
               </p>
             </div>
           </div>
 
-          <div className="lg:col-span-4 bg-white rounded-2xl p-6 border border-slate-200/80 shadow-2xs flex flex-col justify-between">
+          <div className="lg:col-span-4 bg-gradient-to-br from-[#F0FDFB] to-white rounded-3xl p-6 sm:p-7 border border-teal-100/90 shadow-subtle flex flex-col justify-between">
             <div>
               <div className="flex items-center gap-2.5 mb-3">
-                <div className="w-8 h-8 rounded-lg bg-teal-50 text-brand-teal flex items-center justify-center">
-                  <Eye className="w-4 h-4" />
+                <div className="w-9 h-9 rounded-xl bg-brand-teal text-white flex items-center justify-center shadow-xs">
+                  <Eye className="w-4.5 h-4.5" />
                 </div>
                 <h3 className="text-sm font-extrabold text-brand-navy uppercase tracking-wider">
                   Our Vision
                 </h3>
               </div>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed text-justify">
+              <p className="text-xs sm:text-sm text-slate-700 leading-relaxed text-justify">
                 {MISSION_VISION.vision}
               </p>
             </div>
           </div>
 
-          <div className="lg:col-span-3 bg-brand-navy text-white rounded-2xl p-6 border border-slate-800 shadow-2xs flex flex-col justify-between">
+          <div className="lg:col-span-3 bg-brand-navy text-white rounded-3xl p-6 sm:p-7 border border-slate-800 shadow-premium flex flex-col justify-between">
             <div>
               <div className="flex items-center gap-2 mb-2.5">
                 <Languages className="w-4 h-4 text-brand-teal" />

@@ -95,7 +95,7 @@ export default function App() {
         <TestimonialsSection />
 
         {/* Frequently Asked Questions (Insurance, Vetting & 24/7 Dispatch) */}
-        <FaqSection />
+        <FaqSection onOpenConsultationModal={handleOpenStandardConsultation} />
 
         {/* Stoney Creek Operational HQ & Ontario Coverage */}
         <ServiceAreaSection 
