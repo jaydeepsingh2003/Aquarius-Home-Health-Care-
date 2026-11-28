@@ -13,7 +13,7 @@ import {
   FileCheck,
   Users
 } from 'lucide-react';
-import { COMPANY_INFO } from '../data/healthcareData';
+import { COMPANY_INFO, CAREER_GROWTH_TRACKS } from '../data/healthcareData';
 import { 
   generateTrackingId, 
   sanitizeInput, 
@@ -427,6 +427,41 @@ export default function CareersSection({ onOpenCareersModal }) {
 
           </div>
 
+        </div>
+
+        {/* 4-Step Care Pro Orientation & Training Pathway (Inspired by Home Instead Stoney Creek) */}
+        <div className="mt-12 bg-slate-50 rounded-3xl p-6 sm:p-8 border border-slate-200/80">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-5 mb-6 border-b border-slate-200/70">
+            <div>
+              <span className="text-[11px] font-bold uppercase tracking-wider text-brand-blue block">
+                Stoney Creek & Hamilton Onboarding
+              </span>
+              <h3 className="text-base sm:text-lg font-extrabold text-brand-navy">
+                Our 4-Step Care Professional Growth & Support Pathway
+              </h3>
+            </div>
+            <span className="text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200/70 px-3 py-1 rounded-full self-start sm:self-auto">
+              Paid Orientation & 24/7 Team Support
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {CAREER_GROWTH_TRACKS.map((track) => (
+              <div key={track.step} className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-2xs flex flex-col justify-between">
+                <div>
+                  <span className="text-xl font-black text-brand-blue/80 block mb-2">
+                    {track.step}
+                  </span>
+                  <h4 className="text-xs sm:text-sm font-bold text-brand-navy">
+                    {track.title}
+                  </h4>
+                  <p className="mt-2 text-[11px] sm:text-xs text-slate-600 leading-relaxed text-justify">
+                    {track.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
       </div>

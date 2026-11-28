@@ -33,24 +33,24 @@ export default function TestimonialsSection() {
   ];
 
   return (
-    <section className="py-20 bg-brand-surface border-b border-slate-100">
+    <section className="py-16 sm:py-20 bg-brand-surface border-b border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-10">
           <span className="text-xs font-bold uppercase tracking-wider text-brand-blue mb-2 block">
-            Testimonials
+            Client & Partner Voices
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-navy tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight">
             Client & Healthcare Partner Feedback
           </h2>
-          <p className="mt-2.5 text-base text-slate-600">
-            Trusted by families and healthcare institutions across Ontario since 2016.
+          <p className="mt-2.5 text-xs sm:text-sm text-slate-600 text-justify sm:text-center">
+            Trusted by families, clinical directors, and long-term care leaders across Greater Hamilton and Ontario since 2016.
           </p>
         </div>
 
         {/* 3 Review Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {testimonials.map((item, idx) => (
             <div 
               key={idx}
@@ -69,7 +69,7 @@ export default function TestimonialsSection() {
                   </span>
                 </div>
 
-                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed italic">
+                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed italic text-justify">
                   "{item.quote}"
                 </p>
               </div>

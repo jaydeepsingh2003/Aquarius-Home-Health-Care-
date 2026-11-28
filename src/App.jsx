@@ -3,9 +3,12 @@ import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import PillarsSection from './components/PillarsSection';
 import DualServicesSection from './components/DualServicesSection';
+import HowItWorksSection from './components/HowItWorksSection';
 import FacilitiesSection from './components/FacilitiesSection';
 import CareersSection from './components/CareersSection';
 import CareAssessmentWizard from './components/CareAssessmentWizard';
+import TestimonialsSection from './components/TestimonialsSection';
+import FaqSection from './components/FaqSection';
 import ServiceAreaSection from './components/ServiceAreaSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
@@ -19,6 +22,17 @@ export default function App() {
   const [isStaffingModalOpen, setIsStaffingModalOpen] = useState(false);
   const [isConsultationModalOpen, setIsConsultationModalOpen] = useState(false);
   const [isCareersModalOpen, setIsCareersModalOpen] = useState(false);
+  const [preselectedServices, setPreselectedServices] = useState([]);
+
+  const handleOpenStandardConsultation = () => {
+    setPreselectedServices([]);
+    setIsConsultationModalOpen(true);
+  };
+
+  const handleOpenCustomPlanModal = (servicesList) => {
+    setPreselectedServices(servicesList || []);
+    setIsConsultationModalOpen(true);
+  };
 
   const handleScrollToWizard = () => {
     const el = document.getElementById('care-wizard');
@@ -33,7 +47,7 @@ export default function App() {
       {/* Executive Healthcare Navbar (Matching User Reference Layout) */}
       <Navbar 
         onOpenStaffingModal={() => setIsStaffingModalOpen(true)}
-        onOpenConsultationModal={() => setIsConsultationModalOpen(true)}
+        onOpenConsultationModal={handleOpenStandardConsultation}
         onOpenCareersModal={() => setIsCareersModalOpen(true)}
       />
 
@@ -43,20 +57,24 @@ export default function App() {
           activeAudience={activeAudience}
           setActiveAudience={setActiveAudience}
           onOpenStaffingModal={() => setIsStaffingModalOpen(true)}
-          onOpenConsultationModal={() => setIsConsultationModalOpen(true)}
+          onOpenConsultationModal={handleOpenStandardConsultation}
           onScrollToWizard={handleScrollToWizard}
         />
 
-        {/* 4 Pillars of Excellence (From Document Manifesto) */}
-        <PillarsSection 
-          onOpenConsultationModal={() => setIsConsultationModalOpen(true)}
-          onOpenStaffingModal={() => setIsStaffingModalOpen(true)}
-        />
+        {/* About Us: Mission, Vision, Multilingual Support, 4 Pillars & 4-Tier Clinical Vetting */}
+        <PillarsSection />
 
-        {/* Dual Services & Certified Staffing Matrix (PSW, RPN, RN) */}
+        {/* Dual Services, PSW/RPN/RN Matrix & Modular Custom Care Plan Combiner */}
         <DualServicesSection 
           activeAudience={activeAudience}
-          onOpenConsultationModal={() => setIsConsultationModalOpen(true)}
+          onOpenConsultationModal={handleOpenStandardConsultation}
+          onOpenStaffingModal={() => setIsStaffingModalOpen(true)}
+          onOpenCustomPlanModal={handleOpenCustomPlanModal}
+        />
+
+        {/* 3-Step Onboarding & Shift Coverage Process */}
+        <HowItWorksSection 
+          onOpenConsultationModal={handleOpenStandardConsultation}
           onOpenStaffingModal={() => setIsStaffingModalOpen(true)}
         />
 
@@ -65,7 +83,7 @@ export default function App() {
           onOpenStaffingModal={() => setIsStaffingModalOpen(true)}
         />
 
-        {/* Dedicated Clinical Recruitment & Careers Section (#careers) */}
+        {/* Dedicated Clinical Recruitment & Care Pro Growth Pathway (#careers) */}
         <CareersSection 
           onOpenCareersModal={() => setIsCareersModalOpen(true)}
         />
@@ -73,10 +91,16 @@ export default function App() {
         {/* 60-Second Care Assessment Matcher with Cryptographic UUID Tracking */}
         <CareAssessmentWizard />
 
+        {/* Verified Client & Clinical Partner Feedback */}
+        <TestimonialsSection />
+
+        {/* Frequently Asked Questions (Insurance, Vetting & 24/7 Dispatch) */}
+        <FaqSection />
+
         {/* Stoney Creek Operational HQ & Ontario Coverage */}
         <ServiceAreaSection 
           onOpenStaffingModal={() => setIsStaffingModalOpen(true)}
-          onOpenConsultationModal={() => setIsConsultationModalOpen(true)}
+          onOpenConsultationModal={handleOpenStandardConsultation}
         />
 
         {/* Direct Contact & Scheduling Desk */}
@@ -86,7 +110,7 @@ export default function App() {
       {/* Professional Canadian Healthcare Footer */}
       <Footer 
         onOpenStaffingModal={() => setIsStaffingModalOpen(true)}
-        onOpenConsultationModal={() => setIsConsultationModalOpen(true)}
+        onOpenConsultationModal={handleOpenStandardConsultation}
         onOpenCareersModal={() => setIsCareersModalOpen(true)}
       />
 
@@ -100,6 +124,7 @@ export default function App() {
       <ConsultationModal 
         isOpen={isConsultationModalOpen}
         onClose={() => setIsConsultationModalOpen(false)}
+        preselectedServices={preselectedServices}
       />
 
       {/* Clinical Careers & Staff Recruitment Modal */}
@@ -111,7 +136,7 @@ export default function App() {
       {/* Native-grade Floating Mobile Dock */}
       <FloatingMobileDock 
         onOpenStaffingModal={() => setIsStaffingModalOpen(true)}
-        onOpenConsultationModal={() => setIsConsultationModalOpen(true)}
+        onOpenConsultationModal={handleOpenStandardConsultation}
       />
 
     </div>

@@ -10,7 +10,7 @@ export default function FaqSection() {
   };
 
   return (
-    <section className="py-20 bg-white border-b border-slate-100">
+    <section id="faq" className="scroll-mt-28 py-16 sm:py-20 bg-white border-b border-slate-100">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -18,11 +18,11 @@ export default function FaqSection() {
           <span className="text-xs font-bold uppercase tracking-wider text-brand-blue mb-2 block">
             FAQ
           </span>
-          <h2 className="text-3xl font-extrabold text-brand-navy tracking-tight">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-brand-navy tracking-tight">
             Frequently Asked Questions
           </h2>
-          <p className="mt-2 text-sm text-slate-600">
-            Answers for families seeking care and administrators scheduling facility shifts.
+          <p className="mt-2 text-xs sm:text-sm text-slate-600 text-justify sm:text-center">
+            Clear answers for Ontario families seeking care and healthcare administrators scheduling facility shifts.
           </p>
         </div>
 
@@ -48,7 +48,7 @@ export default function FaqSection() {
                 </button>
 
                 {isOpen && (
-                  <div className="px-5 pb-5 pt-0 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-200/50 bg-white">
+                  <div className="px-5 pb-5 pt-0 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-200/50 bg-white text-justify">
                     <p className="pt-3">{item.a}</p>
                   </div>
                 )}

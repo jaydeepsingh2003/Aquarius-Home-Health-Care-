@@ -59,19 +59,19 @@ export default function HowItWorksSection({ onOpenConsultationModal, onOpenStaff
   const steps = activeTab === 'families' ? familySteps : facilitySteps;
 
   return (
-    <section className="py-20 bg-white border-b border-slate-100">
+    <section className="py-16 sm:py-20 bg-slate-50/70 border-b border-slate-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-10">
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
           <span className="text-xs font-bold uppercase tracking-wider text-brand-blue mb-2 block">
-            Process
+            How Care Begins
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-navy tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight">
             How Our Care & Staffing Works
           </h2>
-          <p className="mt-2.5 text-base text-slate-600">
-            A simple 3-step experience designed for rapid, dependable execution.
+          <p className="mt-2.5 text-xs sm:text-sm text-slate-600 text-justify sm:text-center">
+            A structured 3-step onboarding experience—starting home care within 24–48 hours and confirming urgent facility shifts in under 15 minutes.
           </p>
         </div>
 
@@ -125,7 +125,7 @@ export default function HowItWorksSection({ onOpenConsultationModal, onOpenStaff
                   {item.title}
                 </h3>
 
-                <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed text-justify">
                   {item.desc}
                 </p>
               </div>

@@ -4,10 +4,18 @@ import {
   HeartHandshake, 
   Clock, 
   Zap, 
-  CheckCircle2 
+  CheckCircle2,
+  Compass,
+  Eye,
+  Languages,
+  Lock,
+  FileCheck2,
+  Award,
+  UserCheck
 } from 'lucide-react';
+import { COMPANY_INFO, MISSION_VISION } from '../data/healthcareData';
 
-export default function PillarsSection({ onOpenConsultationModal, onOpenStaffingModal }) {
+export default function PillarsSection() {
   const pillars = [
     {
       title: "Qualified & Screened Staff",
@@ -39,21 +47,87 @@ export default function PillarsSection({ onOpenConsultationModal, onOpenStaffing
     }
   ];
 
+  const vettingSteps = [
+    { step: "01", title: "Vulnerable Sector Check", detail: "Mandatory PVSS clearance", icon: Lock },
+    { step: "02", title: "CNO & PSW Registry", detail: "Live Ontario license audit", icon: FileCheck2 },
+    { step: "03", title: "Clinical & CPR Audits", detail: "Medication & BLS certified", icon: Award },
+    { step: "04", title: "Empathy & References", detail: "Behavioral vetting checks", icon: UserCheck }
+  ];
+
   return (
     <section id="why-choose-us" className="scroll-mt-28 py-16 sm:py-20 bg-brand-surface border-b border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="text-center max-w-xl mx-auto mb-10 sm:mb-12">
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
           <span className="text-xs font-bold uppercase tracking-wider text-brand-blue mb-2 block">
-            Why Choose Aquarius
+            About Aquarius & Standards
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight">
             Built on Clinical Excellence & Reliability
           </h2>
-          <p className="mt-2 text-xs sm:text-sm text-slate-600">
-            Founded in 2016 to bridge the gap between quality healthcare and personal comfort.
+          <p className="mt-2.5 text-xs sm:text-sm text-slate-600 text-justify sm:text-center leading-relaxed">
+            Founded in 2016 in Stoney Creek to bridge the gap between quality clinical healthcare and the personal dignity of home across Ontario.
           </p>
+        </div>
+
+        {/* Mission, Vision & Multilingual Heritage Band (Inspired by Trillium Med Village) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-10">
+          <div className="lg:col-span-5 bg-white rounded-2xl p-6 border border-slate-200/80 shadow-2xs flex flex-col justify-between">
+            <div>
+              <div className="flex items-center gap-2.5 mb-3">
+                <div className="w-8 h-8 rounded-lg bg-blue-50 text-brand-blue flex items-center justify-center">
+                  <Compass className="w-4 h-4" />
+                </div>
+                <h3 className="text-sm font-extrabold text-brand-navy uppercase tracking-wider">
+                  Our Mission
+                </h3>
+              </div>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed text-justify">
+                {MISSION_VISION.mission}
+              </p>
+            </div>
+          </div>
+
+          <div className="lg:col-span-4 bg-white rounded-2xl p-6 border border-slate-200/80 shadow-2xs flex flex-col justify-between">
+            <div>
+              <div className="flex items-center gap-2.5 mb-3">
+                <div className="w-8 h-8 rounded-lg bg-teal-50 text-brand-teal flex items-center justify-center">
+                  <Eye className="w-4 h-4" />
+                </div>
+                <h3 className="text-sm font-extrabold text-brand-navy uppercase tracking-wider">
+                  Our Vision
+                </h3>
+              </div>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed text-justify">
+                {MISSION_VISION.vision}
+              </p>
+            </div>
+          </div>
+
+          <div className="lg:col-span-3 bg-brand-navy text-white rounded-2xl p-6 border border-slate-800 shadow-2xs flex flex-col justify-between">
+            <div>
+              <div className="flex items-center gap-2 mb-2.5">
+                <Languages className="w-4 h-4 text-brand-teal" />
+                <span className="text-xs font-bold uppercase tracking-wider text-slate-300">
+                  Culturally Sensitive Care
+                </span>
+              </div>
+              <p className="text-xs text-slate-300 leading-relaxed text-justify">
+                Multilingual matching available so seniors feel understood in their own language:
+              </p>
+              <div className="mt-3 flex flex-wrap gap-1.5">
+                {COMPANY_INFO.languages.map((lang) => (
+                  <span
+                    key={lang}
+                    className="px-2 py-0.5 rounded-md bg-white/10 border border-white/15 text-[10px] font-semibold text-slate-100"
+                  >
+                    {lang}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* 4 Pillars Grid */}
@@ -94,6 +168,41 @@ export default function PillarsSection({ onOpenConsultationModal, onOpenStaffing
               </div>
             );
           })}
+        </div>
+
+        {/* Compact 4-Tier Clinical Vetting Bar */}
+        <div className="mt-10 bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/90 shadow-2xs">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 mb-4 border-b border-slate-100">
+            <div>
+              <span className="text-[10px] font-bold uppercase tracking-wider text-brand-teal block">
+                Mandatory Quality Assurance
+              </span>
+              <h3 className="text-sm sm:text-base font-extrabold text-brand-navy">
+                Our 4-Tier Clinical Vetting Protocol Before Any Deployment
+              </h3>
+            </div>
+            <span className="text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200/70 px-3 py-1 rounded-full self-start sm:self-auto">
+              100% Screened & Insured
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {vettingSteps.map((v) => {
+              const VIcon = v.icon;
+              return (
+                <div key={v.step} className="flex items-center gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100">
+                  <div className="w-9 h-9 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-brand-blue flex-shrink-0">
+                    <VIcon className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <div className="text-[10px] font-bold text-slate-400">STEP {v.step}</div>
+                    <div className="text-xs font-bold text-brand-navy">{v.title}</div>
+                    <div className="text-[11px] text-slate-500">{v.detail}</div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
 
       </div>

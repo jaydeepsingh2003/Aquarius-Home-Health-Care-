@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   X, 
   Send, 
@@ -20,7 +20,7 @@ import {
   dispatchEmailNotification
 } from '../utils/security';
 
-export default function ConsultationModal({ isOpen, onClose }) {
+export default function ConsultationModal({ isOpen, onClose, preselectedServices = [] }) {
   const [formData, setFormData] = useState({
     fullName: '',
     phone: '',
@@ -34,6 +34,18 @@ export default function ConsultationModal({ isOpen, onClose }) {
   const [trackingId, setTrackingId] = useState('');
   const [rateLimitError, setRateLimitError] = useState('');
   const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    if (isOpen && preselectedServices && preselectedServices.length > 0) {
+      setFormData(prev => ({
+        ...prev,
+        serviceNeeded: `Custom Care Mix (${preselectedServices.length} Services)`,
+        notes: prev.notes && !prev.notes.startsWith('Selected Custom Care Plan:')
+          ? prev.notes
+          : `Selected Custom Care Plan: ${preselectedServices.join(', ')}`
+      }));
+    }
+  }, [isOpen, preselectedServices]);
 
   if (!isOpen) return null;
 
@@ -265,7 +277,12 @@ export default function ConsultationModal({ isOpen, onClose }) {
                     onChange={(e) => setFormData({ ...formData, serviceNeeded: e.target.value })}
                     className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs focus:border-brand-blue focus:ring-1 focus:ring-brand-blue outline-none bg-white"
                   >
-                    <option>Certified PSW (ADLs & Support)</option>
+                    {preselectedServices.length > 0 && (
+                      <option value={`Custom Care Mix (${preselectedServices.length} Services)`}>
+                        Custom Care Mix ({preselectedServices.length} Services)
+                      </option>
+                    )}
+                    <option>Certified PSW (Personal Support & ADLs)</option>
                     <option>Licensed RPN (Wound / Medication)</option>
                     <option>Registered Nurse (Complex Care)</option>
                     <option>Dementia / Alzheimer's Care</option>

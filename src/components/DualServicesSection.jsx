@@ -5,21 +5,67 @@ import {
   Check, 
   ArrowRight, 
   Calendar, 
-  Users 
+  Users,
+  HeartHandshake,
+  Smile,
+  ShieldCheck,
+  Activity,
+  Utensils,
+  Sparkles,
+  Car,
+  Coffee,
+  Stethoscope,
+  Moon,
+  Clock,
+  Heart,
+  Plus,
+  X,
+  CheckCircle2
 } from 'lucide-react';
+import { MODULAR_HOME_SERVICES, MISSION_VISION } from '../data/healthcareData';
+
+const ICON_MAP = {
+  HeartHandshake,
+  Smile,
+  ShieldCheck,
+  Activity,
+  Utensils,
+  Sparkles,
+  Car,
+  Coffee,
+  Stethoscope,
+  Moon,
+  Clock,
+  Heart
+};
 
 export default function DualServicesSection({ 
   activeAudience, 
   onOpenConsultationModal, 
-  onOpenStaffingModal 
+  onOpenStaffingModal,
+  onOpenCustomPlanModal
 }) {
   const [currentTab, setCurrentTab] = useState(activeAudience || 'families');
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedCareMix, setSelectedCareMix] = useState([]);
 
   useEffect(() => {
     if (activeAudience) {
       setCurrentTab(activeAudience);
     }
   }, [activeAudience]);
+
+  const categories = ['All', 'Personal Care', 'Specialized Care', 'Daily Living', 'Extended & Recovery'];
+
+  const filteredModularServices = selectedCategory === 'All'
+    ? MODULAR_HOME_SERVICES
+    : MODULAR_HOME_SERVICES.filter(s => s.category === selectedCategory);
+
+  const toggleCareService = (title) => {
+    setSelectedCareMix(prev =>
+      prev.includes(title) ? prev.filter(item => item !== title) : [...prev, title]
+    );
+  };
 
   const familyServices = [
     {
@@ -76,15 +122,15 @@ export default function DualServicesSection({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="text-center max-w-xl mx-auto mb-8 sm:mb-10">
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
           <span className="text-xs font-bold uppercase tracking-wider text-brand-blue mb-2 block">
             Our Services
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight">
             Tailored Care & Staffing Solutions
           </h2>
-          <p className="mt-2 text-xs sm:text-sm text-slate-600">
-            Delivering personalized clinical support in private homes and healthcare institutions.
+          <p className="mt-2.5 text-xs sm:text-sm text-slate-600 text-justify sm:text-center">
+            Delivering personalized clinical support in private homes and healthcare institutions across Stoney Creek, Hamilton, and Ontario.
           </p>
         </div>
 
@@ -170,6 +216,167 @@ export default function DualServicesSection({
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Modular Custom Care Plan Combiner (Inspired by Home Care Help & Divine Home Care) */}
+        <div className="mt-14 pt-12 border-t border-slate-200/80 max-w-6xl mx-auto">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 mb-6">
+            <div>
+              <span className="text-xs font-bold uppercase tracking-wider text-brand-teal mb-1 block">
+                Flexible Care Combinations
+              </span>
+              <h3 className="text-xl sm:text-2xl font-extrabold text-brand-navy tracking-tight">
+                Build Your Custom In-Home Care Plan
+              </h3>
+              <p className="mt-1.5 text-xs sm:text-sm text-slate-600 max-w-2xl text-justify">
+                Every service below can stand alone or be combined into one personalized schedule—such as morning personal care, afternoon companionship, and overnight peace of mind. Select the support items you need to include in your free consultation.
+              </p>
+            </div>
+
+            {/* Category Filter Pills */}
+            <div className="flex flex-wrap gap-1.5">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`px-3 py-1.5 rounded-full text-[11px] font-bold transition ${
+                    selectedCategory === cat
+                      ? 'bg-brand-navy text-white shadow-2xs'
+                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Selected Care Mix Action Tray */}
+          {selectedCareMix.length > 0 && (
+            <div className="mb-6 p-4 rounded-2xl bg-blue-50/80 border border-blue-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-4 animate-fadeIn">
+              <div className="space-y-2">
+                <div className="flex items-center gap-2 text-xs font-bold text-brand-navy">
+                  <CheckCircle2 className="w-4 h-4 text-brand-blue" />
+                  <span>Your Custom Care Mix ({selectedCareMix.length} selected):</span>
+                </div>
+                <div className="flex flex-wrap gap-1.5">
+                  {selectedCareMix.map((title) => (
+                    <span
+                      key={title}
+                      className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white border border-blue-200 text-[11px] font-semibold text-brand-navy"
+                    >
+                      <span>{title}</span>
+                      <button
+                        type="button"
+                        onClick={() => toggleCareService(title)}
+                        className="text-slate-400 hover:text-rose-600"
+                        aria-label={`Remove ${title}`}
+                      >
+                        <X className="w-3 h-3" />
+                      </button>
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <button
+                onClick={() => {
+                  if (onOpenCustomPlanModal) {
+                    onOpenCustomPlanModal(selectedCareMix);
+                  } else {
+                    onOpenConsultationModal();
+                  }
+                }}
+                className="px-5 py-2.5 rounded-full bg-brand-blue hover:bg-blue-700 text-white font-bold text-xs shadow-xs transition flex items-center justify-center gap-2 flex-shrink-0"
+              >
+                <Calendar className="w-3.5 h-3.5" />
+                <span>Book Consultation with This Plan</span>
+              </button>
+            </div>
+          )}
+
+          {/* 12-Service Modular Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+            {filteredModularServices.map((srv) => {
+              const IconComp = ICON_MAP[srv.iconName] || HeartHandshake;
+              const isSelected = selectedCareMix.includes(srv.title);
+
+              return (
+                <button
+                  key={srv.id}
+                  type="button"
+                  onClick={() => toggleCareService(srv.title)}
+                  className={`text-left p-4 rounded-2xl border transition flex flex-col justify-between ${
+                    isSelected
+                      ? 'bg-blue-50/70 border-brand-blue ring-1 ring-brand-blue shadow-xs'
+                      : 'bg-brand-surface border-slate-200/80 hover:bg-white hover:border-slate-300'
+                  }`}
+                >
+                  <div>
+                    <div className="flex items-center justify-between mb-2.5">
+                      <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${
+                        isSelected ? 'bg-brand-blue text-white' : 'bg-white border border-slate-200 text-brand-navy'
+                      }`}>
+                        <IconComp className="w-4 h-4" />
+                      </div>
+                      <span className={`inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full ${
+                        isSelected
+                          ? 'bg-brand-blue text-white'
+                          : 'bg-white border border-slate-200 text-slate-500'
+                      }`}>
+                        {isSelected ? <Check className="w-2.5 h-2.5" /> : <Plus className="w-2.5 h-2.5" />}
+                        <span>{isSelected ? 'Added' : 'Add'}</span>
+                      </span>
+                    </div>
+
+                    <h4 className="text-xs sm:text-sm font-bold text-brand-navy">
+                      {srv.title}
+                    </h4>
+                    <p className="mt-1.5 text-[11px] text-slate-600 leading-relaxed text-justify">
+                      {srv.summary}
+                    </p>
+                  </div>
+
+                  <span className="mt-3 pt-2 border-t border-slate-200/60 text-[10px] font-semibold text-slate-400 block">
+                    {srv.category}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Who This Care Helps & Consistency Promise Strip (Inspired by Divine Home Care) */}
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div className="p-5 sm:p-6 rounded-2xl bg-slate-50 border border-slate-200/80">
+              <h4 className="text-xs font-extrabold uppercase tracking-wider text-brand-navy mb-3 flex items-center gap-2">
+                <Users className="w-4 h-4 text-brand-blue" />
+                <span>Who Our In-Home Care Helps</span>
+              </h4>
+              <div className="space-y-2">
+                {MISSION_VISION.whoItHelps.map((item, idx) => (
+                  <div key={idx} className="flex items-start gap-2 text-xs text-slate-700">
+                    <Check className="w-3.5 h-3.5 text-brand-blue flex-shrink-0 mt-0.5 stroke-[2.5]" />
+                    <span className="text-justify">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="p-5 sm:p-6 rounded-2xl bg-slate-50 border border-slate-200/80">
+              <h4 className="text-xs font-extrabold uppercase tracking-wider text-brand-navy mb-3 flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4 text-brand-teal" />
+                <span>Consistency & Proactive Observation Promise</span>
+              </h4>
+              <div className="space-y-2">
+                {MISSION_VISION.consistencyPromise.map((item, idx) => (
+                  <div key={idx} className="flex items-start gap-2 text-xs text-slate-700">
+                    <Check className="w-3.5 h-3.5 text-brand-teal flex-shrink-0 mt-0.5 stroke-[2.5]" />
+                    <span className="text-justify">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Bottom Switch Helper */}

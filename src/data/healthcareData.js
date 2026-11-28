@@ -14,8 +14,135 @@ export const COMPANY_INFO = {
   phoneRaw: "9055255111",
   email: "raj.manvi@aquariushomehealth.com",
   dispatchHours: "24/7 / 365 Days a Year",
-  officeHours: "Monday – Friday: 8:00 AM – 6:00 PM (Emergency Dispatch: 24/7)"
+  officeHours: "Monday – Friday: 8:00 AM – 6:00 PM (Emergency Dispatch: 24/7)",
+  languages: ["English", "Punjabi", "Hindi", "Urdu", "French", "Filipino (Tagalog)", "Italian"]
 };
+
+export const MISSION_VISION = {
+  mission: "To bridge the gap between hospital-grade clinical care and the dignity of home by delivering thoroughly vetted, compassionate healthcare professionals who foster independence, safety, and complete peace of mind for Ontario families and partner facilities.",
+  vision: "A connected Ontario healthcare community where seniors, recovering patients, and healthcare institutions never face a care gap—supported 24/7 by dependable, culturally sensitive nurses and personal support workers.",
+  whoItHelps: [
+    "Older adults wishing to age safely and independently at home",
+    "Patients transitioning home after surgery or hospital discharge",
+    "Individuals managing Alzheimer's, dementia, stroke, or mobility challenges",
+    "Family caregivers seeking scheduled respite without worry"
+  ],
+  consistencyPromise: [
+    "Consistent caregiver matching aligned to language, personality & household routine",
+    "Daily observation & proactive reporting of subtle health or mobility changes",
+    "Strict respect for personal privacy, cultural preferences & home autonomy"
+  ]
+};
+
+export const MODULAR_HOME_SERVICES = [
+  {
+    id: "personal-care",
+    category: "Personal Care",
+    title: "Personal Care & Hygiene",
+    summary: "Respectful assistance with bathing, dressing, grooming, toileting, and oral hygiene to preserve daily dignity.",
+    iconName: "HeartHandshake"
+  },
+  {
+    id: "companionship",
+    category: "Daily Living",
+    title: "Companionship & Social Support",
+    summary: "Meaningful conversation, shared hobbies, gentle walks, and cognitive engagement to ease isolation.",
+    iconName: "Smile"
+  },
+  {
+    id: "dementia-memory",
+    category: "Specialized Care",
+    title: "Dementia & Alzheimer's Care",
+    summary: "Stage-adapted memory support using calm redirection, wandering prevention, and familiar daily structure.",
+    iconName: "ShieldCheck"
+  },
+  {
+    id: "mobility-transfers",
+    category: "Personal Care",
+    title: "Mobility & Safe Transfers",
+    summary: "Hands-on fall prevention, bed-to-chair transfer safety, and guided range-of-motion assistance.",
+    iconName: "Activity"
+  },
+  {
+    id: "meal-prep",
+    category: "Daily Living",
+    title: "Meal Prep & Grocery Runs",
+    summary: "Nutritious menu planning, dietary-compliant cooking, pantry restocking, and hydration monitoring.",
+    iconName: "Utensils"
+  },
+  {
+    id: "light-housekeeping",
+    category: "Daily Living",
+    title: "Light Housekeeping & Laundry",
+    summary: "Tidying living spaces, fresh linens, dishes, and laundry to keep the home environment safe and restful.",
+    iconName: "Sparkles"
+  },
+  {
+    id: "appointment-escort",
+    category: "Daily Living",
+    title: "Medical Appointment Escorts",
+    summary: "Reliable door-to-door accompaniment to doctor visits, labs, and physiotherapy with notes shared back to family.",
+    iconName: "Car"
+  },
+  {
+    id: "respite-care",
+    category: "Extended & Recovery",
+    title: "Family Respite Relief",
+    summary: "Flexible short-term relief for family caregivers—for a few hours, weekends, or weeks—so you can rest with peace of mind.",
+    iconName: "Coffee"
+  },
+  {
+    id: "post-hospital",
+    category: "Extended & Recovery",
+    title: "Post-Hospital Transitional Care",
+    summary: "Structured discharge recovery, medication reminders, wound monitoring (RPN/RN), and readmission prevention.",
+    iconName: "Stethoscope"
+  },
+  {
+    id: "overnight-care",
+    category: "Extended & Recovery",
+    title: "Overnight Awake Care",
+    summary: "An attentive, awake caregiver throughout the night for safe toileting, turning, and sundowning reassurance.",
+    iconName: "Moon"
+  },
+  {
+    id: "24-hour-care",
+    category: "Extended & Recovery",
+    title: "24-Hour & Live-In Coverage",
+    summary: "Continuous around-the-clock shift rotation from a coordinated team ensuring uninterrupted safety.",
+    iconName: "Clock"
+  },
+  {
+    id: "palliative-care",
+    category: "Specialized Care",
+    title: "Palliative Comfort Care",
+    summary: "Compassionate end-of-life comfort care, pain tracking, and emotional support for both patient and family.",
+    iconName: "Heart"
+  }
+];
+
+export const CAREER_GROWTH_TRACKS = [
+  {
+    step: "01",
+    title: "Guided Orientation & Mentorship",
+    desc: "New PSWs and nurses receive paid orientation covering safe transfers, documentation standards, and accompanied first-shift introductions."
+  },
+  {
+    step: "02",
+    title: "Compatibility Client Matching",
+    desc: "Our coordinators match your clinical strengths, language skills, and Stoney Creek/Hamilton commute preferences with the right clients."
+  },
+  {
+    step: "03",
+    title: "Ongoing Specialized Workshops",
+    desc: "Access continuous training modules in Alzheimer's/dementia care, palliative comfort, and Ontario infection prevention protocols."
+  },
+  {
+    step: "04",
+    title: "24/7 On-Call Support Team",
+    desc: "Whenever you are on a home visit or hospital floor, our live supervisor desk is one phone call away for immediate clinical backing."
+  }
+];
 
 export const PILLARS_OF_EXCELLENCE = [
   {
@@ -214,7 +341,7 @@ export const FAQ_ITEMS = [
   },
   {
     q: "Can healthcare facilities book emergency shift coverage outside business hours?",
-    a: "Yes. Our dispatch line (905) 525-5111 and email scheduling@aquariushomehealth.com operate 24 hours a day, 7 days a week, 365 days a year to immediately assist unit managers, charge nurses, and Directors of Care."
+    a: "Yes. Our dispatch line (905) 525-5111 and email raj.manvi@aquariushomehealth.com operate 24 hours a day, 7 days a week, 365 days a year to immediately assist unit managers, charge nurses, and Directors of Care."
   },
   {
     q: "Are your home care services covered by insurance or government programs?",
