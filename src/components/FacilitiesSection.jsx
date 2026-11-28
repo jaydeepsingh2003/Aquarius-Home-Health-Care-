@@ -29,7 +29,7 @@ export default function FacilitiesSection({ onOpenStaffingModal }) {
     {
       title: "Hospitals & Acute Departments",
       badge: "High-Acuity Ready",
-      image: "/images/service-rpn.jpg",
+      image: "/images/care-clinical-nursing.jpg",
       desc: "Pre-screened, CNO-licensed RNs and RPNs prepared for rapid integration into medical, surgical, and sub-acute recovery floors.",
       highlights: [
         "Active CNO registry verified",
@@ -51,15 +51,13 @@ export default function FacilitiesSection({ onOpenStaffingModal }) {
   ];
 
   return (
-    <section id="facilities" className="scroll-mt-28 py-12 sm:py-16 bg-slate-50/70 border-b border-slate-200/80">
+    <section id="facilities" className="scroll-mt-28 py-12 sm:py-16 bg-soft border-b border-slate-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
         <Reveal>
           <div className="text-center max-w-2xl mx-auto mb-10">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider bg-blue-50 text-brand-blue border border-blue-100 mb-3">
-              <Building2 className="w-4 h-4" />
-              Healthcare Facility Staffing
+            <span className="eyebrow">
+              Facility Staffing
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight">
               24/7 Institutional Shift Coverage
@@ -70,19 +68,18 @@ export default function FacilitiesSection({ onOpenStaffingModal }) {
           </div>
         </Reveal>
 
-        {/* 4 Key Operational Highlights */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
           {[
-            { val: "< 15 Mins", sub: "Average shift confirmation time", icon: Clock, color: "bg-blue-50 text-brand-blue" },
-            { val: "100% Vetted", sub: "CNO & Vulnerable Sector cleared", icon: ShieldCheck, color: "bg-emerald-50 text-emerald-600" },
-            { val: "PHIPA Ready", sub: "Compliant charting & WSIB insured", icon: FileCheck, color: "bg-teal-50 text-brand-teal" },
-            { val: "24/7/365", sub: "Live scheduling coordinators", icon: Zap, color: "bg-amber-50 text-brand-amber" }
+            { val: "< 15 Mins", sub: "Average shift confirmation time", icon: Clock },
+            { val: "100% Vetted", sub: "CNO & Vulnerable Sector cleared", icon: ShieldCheck },
+            { val: "PHIPA Ready", sub: "Compliant charting & WSIB insured", icon: FileCheck },
+            { val: "24/7/365", sub: "Live scheduling coordinators", icon: Zap }
           ].map((m, i) => {
             const Icon = m.icon;
             return (
               <Reveal key={i} delay={i * 60}>
-                <div className="h-full bg-white p-5 rounded-2xl border border-slate-200/90 shadow-2xs card-hover">
-                  <div className={`w-10 h-10 rounded-xl ${m.color} flex items-center justify-center mb-3`}>
+                <div className="h-full card-ab p-5">
+                  <div className="card-icon !w-11 !h-11 mb-3">
                     <Icon className="w-5 h-5" />
                   </div>
                   <div className="text-lg sm:text-xl font-black text-brand-navy">{m.val}</div>
@@ -93,30 +90,29 @@ export default function FacilitiesSection({ onOpenStaffingModal }) {
           })}
         </div>
 
-        {/* 3 Solution Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
           {facilitySolutions.map((sol, idx) => (
             <Reveal key={idx} delay={idx * 80}>
-              <div className="h-full bg-white rounded-3xl border border-slate-200/90 overflow-hidden shadow-subtle card-hover flex flex-col group">
-                <div className="relative h-44 w-full overflow-hidden bg-slate-100">
+              <div className="h-full card-ab overflow-hidden p-5 sm:p-6 flex flex-col group">
+                <div className="relative h-44 w-full rounded-2xl overflow-hidden bg-slate-100 mb-5">
                   <img 
                     src={sol.image} 
                     alt={sol.title} 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/55 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 via-transparent to-transparent" />
                   <span className="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold bg-white/95 text-brand-navy shadow-xs">
                     {sol.badge}
                   </span>
                 </div>
 
-                <div className="p-6 flex flex-col flex-grow justify-between">
+                <div className="flex flex-col flex-grow justify-between">
                   <div>
                     <h3 className="text-lg font-extrabold text-brand-navy leading-snug">
                       {sol.title}
                     </h3>
-                    <p className="mt-2.5 text-sm text-slate-600 leading-relaxed text-justify">
+                    <p className="mt-2 text-sm text-slate-600 leading-relaxed text-justify">
                       {sol.desc}
                     </p>
 
@@ -133,10 +129,10 @@ export default function FacilitiesSection({ onOpenStaffingModal }) {
                   <div className="mt-6 pt-4 border-t border-slate-100">
                     <button
                       onClick={onOpenStaffingModal}
-                      className="w-full py-2.5 px-4 rounded-full bg-slate-50 hover:bg-brand-blue text-brand-navy hover:text-white font-bold text-sm transition flex items-center justify-center gap-2 border border-slate-200 hover:border-brand-blue"
+                      className="w-full py-2.5 px-4 rounded-full bg-[#EAF1FA] hover:bg-brand-blue text-brand-blue hover:text-white font-bold text-sm transition flex items-center justify-center gap-2"
                     >
                       <span>Request Shift Coverage</span>
-                      <ArrowRight className="w-4 h-4" />
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </button>
                   </div>
                 </div>
@@ -145,7 +141,6 @@ export default function FacilitiesSection({ onOpenStaffingModal }) {
           ))}
         </div>
 
-        {/* Concise Facility Fast Dispatch Banner */}
         <Reveal>
           <div className="bg-gradient-to-br from-brand-navy to-slate-900 rounded-3xl p-6 sm:p-8 text-white shadow-elevated flex flex-col lg:flex-row items-center justify-between gap-6 border border-slate-800">
             <div className="space-y-1.5 text-center lg:text-left">

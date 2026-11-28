@@ -55,12 +55,12 @@ export default function HowItWorksSection({ onOpenConsultationModal, onOpenStaff
   const steps = activeTab === 'families' ? familySteps : facilitySteps;
 
   return (
-    <section className="py-12 sm:py-16 bg-gradient-to-b from-slate-50 to-white border-b border-slate-200/80">
+    <section className="py-12 sm:py-16 bg-white border-b border-slate-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <Reveal>
           <div className="text-center max-w-2xl mx-auto mb-7 sm:mb-9">
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider bg-blue-50 text-brand-blue border border-blue-100 mb-2.5">
+            <span className="eyebrow">
               3-Step Onboarding
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight">
@@ -73,7 +73,7 @@ export default function HowItWorksSection({ onOpenConsultationModal, onOpenStaff
         </Reveal>
 
         <div className="flex justify-center mb-9">
-          <div className="inline-flex p-1.5 bg-slate-100 rounded-full border border-slate-200/80 shadow-2xs">
+          <div className="inline-flex p-1.5 bg-[#EAF1FA] rounded-full border border-slate-200/80 shadow-2xs">
             <button
               onClick={() => setActiveTab('families')}
               className={`py-2 px-5 sm:px-6 rounded-full font-bold text-sm transition-all flex items-center gap-2 ${
@@ -107,7 +107,7 @@ export default function HowItWorksSection({ onOpenConsultationModal, onOpenStaff
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {steps.map((item, idx) => (
               <Reveal key={`${activeTab}-${idx}`} delay={idx * 90}>
-                <div className="h-full relative bg-white rounded-3xl p-6 border border-slate-200/90 shadow-subtle card-hover flex flex-col justify-between">
+                <div className="h-full relative card-ab p-6 flex flex-col justify-between">
                   <div>
                     <div className="flex items-center justify-between mb-4">
                       <div className="w-11 h-11 rounded-2xl bg-brand-navy text-white font-black text-base flex items-center justify-center shadow-xs relative z-10">

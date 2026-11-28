@@ -92,12 +92,12 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="scroll-mt-28 py-12 sm:py-16 bg-brand-surface border-b border-slate-100">
+    <section id="contact" className="scroll-mt-28 py-12 sm:py-16 bg-soft border-b border-slate-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <Reveal>
           <div className="text-center max-w-2xl mx-auto mb-10">
-            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-brand-blue mb-1.5 block">
+            <span className="eyebrow">
               Contact & Service Coverage
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight">

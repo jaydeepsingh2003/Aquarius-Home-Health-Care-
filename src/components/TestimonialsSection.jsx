@@ -28,12 +28,12 @@ export default function TestimonialsSection() {
   ];
 
   return (
-    <section className="py-12 sm:py-16 bg-brand-surface border-b border-slate-200/80">
+    <section className="py-12 sm:py-16 bg-soft border-b border-slate-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <Reveal>
           <div className="text-center max-w-2xl mx-auto mb-9">
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider bg-amber-50 text-amber-700 border border-amber-200/70 mb-2.5">
+            <span className="eyebrow">
               Client & Partner Feedback
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight">
@@ -45,7 +45,7 @@ export default function TestimonialsSection() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {testimonials.map((item, idx) => (
             <Reveal key={idx} delay={idx * 80}>
-              <div className="h-full bg-white rounded-3xl p-6 border border-slate-200/90 shadow-subtle card-hover flex flex-col justify-between">
+              <div className="h-full card-ab p-6 flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-0.5 text-amber-400">

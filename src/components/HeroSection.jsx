@@ -4,11 +4,15 @@ import {
   PhoneCall, 
   Building2, 
   Home, 
-  Check, 
   ShieldCheck,
-  ClipboardList
+  ClipboardList,
+  Sun,
+  Coffee,
+  Sunset,
+  Moon,
+  Award
 } from 'lucide-react';
-import { COMPANY_INFO, TRUST_STATS } from '../data/healthcareData';
+import { COMPANY_INFO, SERVICE_AREAS } from '../data/healthcareData';
 
 export default function HeroSection({ 
   activeAudience, 
@@ -19,21 +23,23 @@ export default function HeroSection({
 }) {
   const isFamily = activeAudience === 'families';
 
-  return (
-    <section id="home" className="scroll-mt-28 relative overflow-hidden bg-gradient-to-b from-[#F0F6FF] via-white to-white pt-6 pb-12 sm:pt-10 sm:pb-16 border-b border-slate-200/70">
-      
-      {/* Subtle Ambient Healthcare Radial Accents */}
-      <div className="pointer-events-none absolute -top-24 -right-24 w-96 h-96 rounded-full bg-blue-100/50 blur-3xl" aria-hidden="true" />
-      <div className="pointer-events-none absolute top-1/3 -left-24 w-80 h-80 rounded-full bg-teal-100/40 blur-3xl" aria-hidden="true" />
+  const rhythmSteps = [
+    { time: "Morning", title: "Hygiene & Vitals", desc: "Safe bathing, dressing & breakfast.", icon: Sun },
+    { time: "Afternoon", title: "Mobility & Companionship", desc: "Walks, tea & appointment escorts.", icon: Coffee },
+    { time: "Evening", title: "Meals & Medication", desc: "Dinner prep & bedtime calm routines.", icon: Sunset },
+    { time: "Overnight", title: "24/7 Peace of Mind", desc: "Awake safety & rapid shift response.", icon: Moon }
+  ];
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  return (
+    <section id="home" className="scroll-mt-28 hero-surface pt-6 pb-12 sm:pt-10 sm:pb-16 border-b border-slate-200/80">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Executive Segmented Audience Switcher */}
-        <div className="flex justify-center mb-6 sm:mb-8 animate-fadeUp">
+        {/* Clean Pill Switcher */}
+        <div className="flex justify-center lg:justify-start mb-6 animate-fadeUp">
           <div className="inline-flex p-1.5 bg-white rounded-full border border-slate-200/90 shadow-subtle w-full max-w-sm sm:w-auto">
             <button
               onClick={() => setActiveAudience('families')}
-              className={`flex-1 sm:flex-none flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 rounded-full font-bold text-sm transition-all ${
+              className={`flex-1 sm:flex-none flex items-center justify-center gap-2 px-5 py-2 rounded-full font-bold text-sm transition-all ${
                 isFamily
                   ? 'bg-brand-navy text-white shadow-xs'
                   : 'text-slate-600 hover:text-brand-navy'
@@ -45,7 +51,7 @@ export default function HeroSection({
 
             <button
               onClick={() => setActiveAudience('facilities')}
-              className={`flex-1 sm:flex-none flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 rounded-full font-bold text-sm transition-all ${
+              className={`flex-1 sm:flex-none flex items-center justify-center gap-2 px-5 py-2 rounded-full font-bold text-sm transition-all ${
                 !isFamily
                   ? 'bg-brand-teal text-white shadow-xs'
                   : 'text-slate-600 hover:text-brand-navy'
@@ -57,72 +63,54 @@ export default function HeroSection({
           </div>
         </div>
 
-        {/* Main Hero Split */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        {/* HomeCareHelp-Inspired Hero Two-Column Split */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           
-          {/* Left Column: Readable Copy */}
-          <div className="lg:col-span-7 text-center lg:text-left animate-fadeUp">
+          {/* Left Column: Editorial Headline, Pills, Buttons & Trust Strip */}
+          <div className="lg:col-span-6 text-center lg:text-left animate-fadeUp">
             
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200/90 shadow-2xs text-brand-navy text-xs sm:text-sm font-semibold mb-4">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-              <span>Stoney Creek & Greater Hamilton • Since 2016</span>
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5 mb-5">
+              <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 text-xs sm:text-sm font-semibold text-brand-navy shadow-subtle">
+                <ShieldCheck className="w-4 h-4 text-brand-blue" />
+                <span>CNO Licensed & Police Screened</span>
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 text-xs sm:text-sm font-semibold text-brand-navy shadow-subtle">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span>Proudly Canadian • Since 2016</span>
+              </span>
             </div>
 
             {isFamily ? (
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-navy tracking-tight leading-[1.15]">
-                Dignified, Compassionate <br className="hidden sm:inline" />
-                <span className="text-brand-blue">In-Home Healthcare.</span>
+              <h1 className="text-3xl sm:text-4xl lg:text-[3.1rem] font-extrabold text-brand-navy tracking-tight leading-[1.13]">
+                Compassionate Home Care in{' '}
+                <span className="text-brand-blue">Stoney Creek & Hamilton</span>
               </h1>
             ) : (
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-navy tracking-tight leading-[1.15]">
-                Reliable 24/7 Clinical Staffing <br className="hidden sm:inline" />
-                <span className="text-brand-teal">for Healthcare Facilities.</span>
+              <h1 className="text-3xl sm:text-4xl lg:text-[3.1rem] font-extrabold text-brand-navy tracking-tight leading-[1.13]">
+                Reliable 24/7 Nursing Staffing for{' '}
+                <span className="text-brand-teal">Healthcare Facilities</span>
               </h1>
             )}
 
-            <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed text-justify max-w-2xl mx-auto lg:mx-0">
+            <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed text-justify max-w-xl mx-auto lg:mx-0">
               {isFamily ? (
                 <>
-                  Since 2016, <strong>Aquarius Home Health Care</strong> has delivered certified nursing and personal support in the comfort of home—helping seniors stay independent with complete family peace of mind.
+                  <strong>Aquarius Home Health Care</strong> delivers personalized PSW, RPN, and RN support for seniors and families across Stoney Creek, Hamilton, and Ontario—preserving dignity at home.
                 </>
               ) : (
                 <>
-                  We provide hospitals, long-term care homes, and clinics with pre-screened PSWs, RPNs, and RNs on demand—eliminating shift gaps caused by sick calls or sudden surges.
+                  Built on clinical rigor and rapid dispatch, we supply hospitals, long-term care homes, and clinics with pre-screened PSWs, RPNs, and RNs within minutes.
                 </>
               )}
             </p>
 
-            {/* Clear Verification Checklist */}
-            <div className="mt-5 flex justify-center lg:justify-start">
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-5 text-sm font-semibold text-slate-700 bg-white sm:bg-transparent px-4 py-3.5 sm:p-0 rounded-2xl border border-slate-200/80 sm:border-0 w-full sm:w-auto max-w-sm sm:max-w-none">
-                <div className="flex items-center gap-2">
-                  <div className="w-5 h-5 rounded-full bg-teal-50 border border-teal-100 text-brand-teal flex items-center justify-center flex-shrink-0">
-                    <Check className="w-3 h-3 stroke-[3]" />
-                  </div>
-                  <span>Police Screened</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-5 h-5 rounded-full bg-blue-50 border border-blue-100 text-brand-blue flex items-center justify-center flex-shrink-0">
-                    <Check className="w-3 h-3 stroke-[3]" />
-                  </div>
-                  <span>CNO Licensed Staff</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-5 h-5 rounded-full bg-amber-50 border border-amber-100 text-brand-amber flex items-center justify-center flex-shrink-0">
-                    <Check className="w-3 h-3 stroke-[3]" />
-                  </div>
-                  <span>24/7 Dispatch</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Action Pill Buttons */}
+            {/* Primary Pill Action Buttons */}
             <div className="mt-7 flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3">
               {isFamily ? (
                 <>
                   <button
                     onClick={onOpenConsultationModal}
-                    className="px-7 py-3.5 rounded-full bg-brand-blue hover:bg-blue-700 text-white font-bold text-sm sm:text-base shadow-premium hover:shadow-elevated transition-all flex items-center justify-center gap-2 active:scale-[0.98]"
+                    className="px-7 py-3.5 rounded-full bg-brand-blue hover:bg-blue-700 text-white font-bold text-sm sm:text-base shadow-premium hover:shadow-elevated transition-all flex items-center justify-center gap-2 hover:-translate-y-0.5"
                   >
                     <span>Book Free Consultation</span>
                     <ArrowRight className="w-4 h-4" />
@@ -130,9 +118,9 @@ export default function HeroSection({
 
                   <button
                     onClick={onScrollToWizard}
-                    className="px-6 py-3.5 rounded-full bg-white hover:bg-slate-50 text-brand-navy border border-slate-200 font-bold text-sm sm:text-base shadow-subtle transition-all flex items-center justify-center gap-2"
+                    className="px-6 py-3.5 rounded-full bg-white hover:bg-brand-navy text-brand-navy hover:text-white border-2 border-brand-navy/20 hover:border-brand-navy font-bold text-sm sm:text-base transition-all flex items-center justify-center gap-2"
                   >
-                    <ClipboardList className="w-4 h-4 text-brand-blue" />
+                    <ClipboardList className="w-4 h-4" />
                     <span>60-Sec Care Assessment</span>
                   </button>
                 </>
@@ -140,7 +128,7 @@ export default function HeroSection({
                 <>
                   <button
                     onClick={onOpenStaffingModal}
-                    className="px-7 py-3.5 rounded-full bg-brand-teal hover:bg-teal-800 text-white font-bold text-sm sm:text-base shadow-premium hover:shadow-elevated transition-all flex items-center justify-center gap-2 active:scale-[0.98]"
+                    className="px-7 py-3.5 rounded-full bg-brand-teal hover:bg-teal-800 text-white font-bold text-sm sm:text-base shadow-premium hover:shadow-elevated transition-all flex items-center justify-center gap-2 hover:-translate-y-0.5"
                   >
                     <span>Request Urgent Shift Coverage</span>
                     <ArrowRight className="w-4 h-4" />
@@ -148,86 +136,76 @@ export default function HeroSection({
 
                   <a
                     href={`tel:${COMPANY_INFO.phoneRaw}`}
-                    className="px-6 py-3.5 rounded-full bg-white hover:bg-slate-50 text-brand-navy border border-slate-200 font-bold text-sm sm:text-base shadow-subtle transition-all flex items-center justify-center gap-2"
+                    className="px-6 py-3.5 rounded-full bg-white hover:bg-brand-navy text-brand-navy hover:text-white border-2 border-brand-navy/20 hover:border-brand-navy font-bold text-sm sm:text-base transition-all flex items-center justify-center gap-2"
                   >
-                    <PhoneCall className="w-4 h-4 text-brand-blue" />
+                    <PhoneCall className="w-4 h-4" />
                     <span>Call (905) 525-5111</span>
                   </a>
                 </>
               )}
             </div>
 
+            {/* Signature Overlapping Caregiver Avatars Strip */}
+            <div className="mt-7 pt-2 flex items-center justify-center lg:justify-start gap-3.5">
+              <div className="flex -space-x-3">
+                <img 
+                  src="/images/care-companionship.jpg" 
+                  alt="Aquarius PSW Team Member" 
+                  className="w-11 h-11 rounded-full object-cover border-[3px] border-white shadow-xs"
+                />
+                <img 
+                  src="/images/care-clinical-nursing.jpg" 
+                  alt="Aquarius RN Team Member" 
+                  className="w-11 h-11 rounded-full object-cover border-[3px] border-white shadow-xs"
+                />
+                <img 
+                  src="/images/hero-aquarius-care.jpg" 
+                  alt="Aquarius Mobility Caregiver" 
+                  className="w-11 h-11 rounded-full object-cover border-[3px] border-white shadow-xs"
+                />
+              </div>
+              <p className="text-sm text-slate-600 text-left leading-snug">
+                Trusted across <strong className="text-brand-navy">{SERVICE_AREAS.length}+ Ontario communities</strong><br className="hidden sm:inline" /> with 24/7 dispatch at <strong className="text-brand-blue">{COMPANY_INFO.phone}</strong>
+              </p>
+            </div>
+
           </div>
 
-          {/* Right Column: Elevated Clinical Image & Tier Card */}
-          <div className="lg:col-span-5 animate-fadeIn">
-            <div className="bg-white rounded-3xl p-4 sm:p-5 border border-slate-200/90 shadow-elevated overflow-hidden card-hover">
+          {/* Right Column: Signature Hero Media Frame + Floating Cards */}
+          <div className="lg:col-span-6 animate-fadeIn">
+            <div className="relative mx-auto max-w-xl lg:max-w-none pb-5 sm:pb-6 pl-0 sm:pl-5">
               
-              {/* Hero Photo */}
-              <div className="relative rounded-2xl overflow-hidden mb-4 shadow-xs aspect-[16/10] bg-slate-100">
+              <div className="relative rounded-[28px] overflow-hidden shadow-elevated border-4 border-white bg-white">
                 <img 
-                  src="/images/hero-homecare.jpg" 
-                  alt="Aquarius Home Health Care nurse caring for a senior at home" 
-                  className="w-full h-full object-cover"
+                  src={isFamily ? "/images/hero-aquarius-care.jpg" : "/images/care-clinical-nursing.jpg"} 
+                  alt={isFamily ? "Aquarius caregiver supporting a smiling grandfather at home" : "Aquarius registered nurse checking vitals cleanly"} 
+                  className="w-full h-[300px] sm:h-[390px] object-cover transition-all duration-500"
                   loading="eager"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/55 via-transparent to-transparent" />
-                <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full border border-slate-200/80 text-xs font-bold text-brand-navy shadow-xs flex items-center gap-1.5">
-                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-                  <span>CNO & PVSS Verified</span>
-                </div>
+              </div>
 
-                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white text-xs font-bold">
-                  <span className="bg-brand-navy/85 backdrop-blur-md px-2.5 py-1 rounded-lg">
-                    Est. 2016 • Stoney Creek
-                  </span>
-                  <span className="bg-emerald-600/95 backdrop-blur-md px-2.5 py-1 rounded-lg">
-                    24/7 Active
-                  </span>
+              {/* Floating Top-Right Experience Card */}
+              <div className="hidden sm:flex items-center gap-3 bg-white rounded-2xl px-4 py-3 shadow-elevated border border-slate-100 absolute top-5 -right-2 animate-float">
+                <div className="w-10 h-10 rounded-xl bg-blue-50 text-brand-blue flex items-center justify-center">
+                  <Award className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="text-base font-extrabold text-brand-navy leading-tight">Est. 2016</div>
+                  <div className="text-xs text-slate-500 font-medium">10+ Years Caring in Ontario</div>
                 </div>
               </div>
 
-              {/* 3 Staff Tiers */}
-              <div className="space-y-2">
-                <div className="p-3 bg-slate-50/90 rounded-2xl border border-slate-200/70">
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="font-bold text-sm text-brand-navy">Personal Support Workers (PSW)</span>
-                    <span className="text-xs font-bold text-brand-blue bg-blue-50 px-2.5 py-0.5 rounded-full">ADLs</span>
-                  </div>
-                  <p className="text-sm text-slate-600 mt-0.5 text-justify">
-                    Hygiene, safe transfers, meal prep & companionship.
-                  </p>
+              {/* Floating Bottom-Left Stat Card (Signature hero-stat-card) */}
+              <div className="mt-3 sm:mt-0 sm:absolute sm:left-0 sm:bottom-0 bg-white rounded-2xl p-4 shadow-elevated border border-slate-100 flex items-center gap-3.5 max-w-xs mx-auto sm:mx-0">
+                <div className="w-12 h-12 rounded-2xl bg-[#EAF1FA] text-brand-blue flex items-center justify-center flex-shrink-0">
+                  <ShieldCheck className="w-6 h-6" />
                 </div>
-
-                <div className="p-3 bg-slate-50/90 rounded-2xl border border-slate-200/70">
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="font-bold text-sm text-brand-navy">Registered Practical Nurses (RPN)</span>
-                    <span className="text-xs font-bold text-brand-teal bg-teal-50 px-2.5 py-0.5 rounded-full">CNO</span>
+                <div>
+                  <div className="text-xl font-black text-brand-blue leading-none">&lt; 15 Min</div>
+                  <div className="text-xs sm:text-sm font-semibold text-slate-600 mt-1">
+                    24/7 Dispatch & Care Coordination
                   </div>
-                  <p className="text-sm text-slate-600 mt-0.5 text-justify">
-                    Wound care, injections, catheter & vitals monitoring.
-                  </p>
                 </div>
-
-                <div className="p-3 bg-slate-50/90 rounded-2xl border border-slate-200/70">
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="font-bold text-sm text-brand-navy">Registered Nurses (RN)</span>
-                    <span className="text-xs font-bold text-brand-navy bg-white border border-slate-200 px-2.5 py-0.5 rounded-full">Acute</span>
-                  </div>
-                  <p className="text-sm text-slate-600 mt-0.5 text-justify">
-                    Complex care, IV therapy & palliative support.
-                  </p>
-                </div>
-              </div>
-
-              <div className="mt-3.5 pt-3 border-t border-slate-100 flex items-center justify-between text-sm">
-                <span className="text-slate-500 font-medium">24/7 Dispatch Desk:</span>
-                <a 
-                  href={`tel:${COMPANY_INFO.phoneRaw}`} 
-                  className="font-extrabold text-brand-blue hover:text-brand-navy transition"
-                >
-                  (905) 525-5111
-                </a>
               </div>
 
             </div>
@@ -235,23 +213,27 @@ export default function HeroSection({
 
         </div>
 
-        {/* High-Contrast Dark Oxford Navy Stats Ribbon */}
-        <div className="mt-10 sm:mt-12 bg-gradient-to-r from-brand-navy via-brand-navy-light to-brand-navy rounded-3xl p-5 sm:p-7 text-white shadow-elevated border border-slate-800">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 text-center divide-y-0 lg:divide-x divide-white/10">
-            {TRUST_STATS.map((stat, idx) => (
-              <div key={idx} className="px-2">
-                <div className="text-2xl sm:text-3xl font-black text-white tracking-tight">
-                  {stat.value}
+        {/* Signature HomeCareHelp 4-Segment Daily Care Rhythm Strip */}
+        <div className="mt-10 sm:mt-14 bg-white rounded-[26px] border border-slate-200/90 shadow-premium overflow-hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-slate-200/80">
+          {rhythmSteps.map((step, i) => {
+            const Icon = step.icon;
+            return (
+              <div key={i} className="p-5 sm:p-6 relative hover:bg-blue-50/35 transition-colors">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xs font-extrabold uppercase tracking-widest text-brand-blue">
+                    {step.time}
+                  </span>
+                  <Icon className="w-5 h-5 text-brand-teal" />
                 </div>
-                <div className="text-xs sm:text-sm font-bold text-teal-300 uppercase tracking-wider mt-1">
-                  {stat.label}
-                </div>
-                <div className="text-xs sm:text-sm text-slate-300 mt-0.5">
-                  {stat.sub}
-                </div>
+                <h3 className="text-base font-extrabold text-brand-navy">
+                  {step.title}
+                </h3>
+                <p className="mt-1 text-sm text-slate-600 leading-snug">
+                  {step.desc}
+                </p>
               </div>
-            ))}
-          </div>
+            );
+          })}
         </div>
 
       </div>

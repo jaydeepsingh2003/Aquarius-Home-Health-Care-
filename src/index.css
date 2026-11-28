@@ -15,13 +15,13 @@
   body {
     overflow-x: hidden;
     width: 100%;
-    background-color: #F8FAFC;
+    background-color: #F5F7FA;
     color: #0F172A;
     font-size: 1rem;
     line-height: 1.65;
   }
 
-  /* Prevent iOS Safari auto-zoom on input focus & ensure readable inputs */
+  /* Prevent iOS Safari auto-zoom on input focus & keep form inputs readable */
   input, select, textarea {
     font-size: 16px;
   }
@@ -40,9 +40,72 @@
   -webkit-hyphens: auto;
 }
 
+/* HomeCareHelp-Inspired Surface & Hero Atmospheric Tokens */
+.bg-soft {
+  background-color: #EAF1FA;
+}
+
+.hero-surface {
+  background:
+    radial-gradient(900px 480px at 88% -5%, rgba(255, 255, 255, 0.95) 0%, transparent 62%),
+    linear-gradient(180deg, #EAF1FA 0%, #F5F7FA 100%);
+}
+
+/* Signature Eyebrow Heading with Leading Bar */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #1D63ED;
+  margin-bottom: 0.65rem;
+}
+.eyebrow::before {
+  content: "";
+  width: 22px;
+  height: 2.5px;
+  border-radius: 2px;
+  background: currentColor;
+  display: inline-block;
+}
+
+/* Signature Elevated Cards & Interactive Icon Inversion */
+.card-ab {
+  background: #FFFFFF;
+  border: 1px solid #E4E9F0;
+  border-radius: 20px;
+  box-shadow: 0 1px 2px rgba(15, 53, 104, 0.05), 0 8px 22px rgba(15, 53, 104, 0.06);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.28s ease;
+}
+.card-ab:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 34px rgba(23, 72, 144, 0.13);
+  border-color: rgba(29, 99, 237, 0.22);
+}
+
+.card-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 15px;
+  background: #EAF1FA;
+  color: #1D63ED;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card-ab:hover .card-icon {
+  background: #1D63ED;
+  color: #FFFFFF;
+  transform: scale(1.04);
+}
+
 /* Luxury Glass Effects */
 .glass-nav {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
 }
@@ -58,7 +121,7 @@
   transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.28s ease;
 }
 .card-hover:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
 }
 
 /* Smooth Micro-Animations */
@@ -74,7 +137,7 @@
 
 @keyframes gentleFloat {
   0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-4px); }
+  50% { transform: translateY(-5px); }
 }
 
 .animate-fadeIn {
@@ -93,7 +156,7 @@
   .animate-fadeIn, .animate-fadeUp, .animate-float {
     animation: none !important;
   }
-  .card-hover:hover {
+  .card-hover:hover, .card-ab:hover {
     transform: none !important;
   }
 }
@@ -109,7 +172,7 @@
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #F8FAFC;
+  background: #F5F7FA;
 }
 ::-webkit-scrollbar-thumb {
   background: #CBD5E1;

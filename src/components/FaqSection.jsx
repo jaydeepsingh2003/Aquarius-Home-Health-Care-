@@ -16,7 +16,7 @@ export default function FaqSection() {
         
         <Reveal>
           <div className="text-center max-w-xl mx-auto mb-8">
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider bg-blue-50 text-brand-blue border border-blue-100 mb-2.5">
+            <span className="eyebrow">
               FAQ & Insurance
             </span>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-brand-navy tracking-tight">

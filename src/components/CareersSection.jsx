@@ -106,13 +106,12 @@ export default function CareersSection() {
   ];
 
   return (
-    <section id="careers" className="scroll-mt-28 py-12 sm:py-16 bg-white border-b border-slate-200/80">
+    <section id="careers" className="scroll-mt-28 py-12 sm:py-16 bg-soft border-b border-slate-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <Reveal>
           <div className="text-center max-w-2xl mx-auto mb-10">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider bg-emerald-50 text-emerald-700 border border-emerald-200/60 mb-2.5">
-              <Briefcase className="w-4 h-4" />
+            <span className="eyebrow">
               Careers at Aquarius
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight">
@@ -126,15 +125,31 @@ export default function CareersSection() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
-          {/* Left Column: Compact Perks, Care Pro Pathway & Open Roles */}
+          {/* Left Column: Caregiver Team Photo Card + Perks + Pathway */}
           <div className="lg:col-span-5 space-y-5">
+            <div className="card-ab overflow-hidden p-3">
+              <div className="relative h-44 w-full rounded-2xl overflow-hidden">
+                <img
+                  src="/images/care-companionship.jpg"
+                  alt="Smiling Aquarius PSW enjoying warm tea and conversation with client"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/65 via-transparent to-transparent" />
+                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white text-xs font-bold">
+                  <span>Meaningful Local Work in Ontario</span>
+                  <span className="px-2.5 py-0.5 rounded-full bg-emerald-500 text-white">Hiring</span>
+                </div>
+              </div>
+            </div>
+
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
               {perks.map((p, idx) => {
                 const Icon = p.icon;
                 return (
                   <Reveal key={idx} delay={idx * 60}>
-                    <div className="h-full p-4 rounded-2xl bg-slate-50 border border-slate-200/80 shadow-2xs card-hover">
-                      <div className="w-9 h-9 rounded-xl bg-blue-50 text-brand-blue flex items-center justify-center mb-2.5">
+                    <div className="h-full card-ab p-4">
+                      <div className="card-icon !w-10 !h-10 mb-2.5">
                         <Icon className="w-4.5 h-4.5" />
                       </div>
                       <h4 className="text-sm font-bold text-brand-navy">{p.title}</h4>
@@ -146,14 +161,14 @@ export default function CareersSection() {
             </div>
 
             {/* Compact Care Pro Growth Pathway */}
-            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80">
+            <div className="p-5 rounded-[20px] bg-white border border-slate-200/80 shadow-subtle">
               <h4 className="text-xs sm:text-sm font-extrabold text-brand-navy uppercase tracking-wider mb-3 flex items-center gap-2">
                 <Users className="w-4 h-4 text-brand-blue" />
                 <span>Care Professional Support Pathway</span>
               </h4>
               <div className="space-y-2.5">
                 {CAREER_GROWTH_TRACKS.map((track) => (
-                  <div key={track.step} className="flex items-start gap-3 p-2.5 rounded-xl bg-white border border-slate-200/70">
+                  <div key={track.step} className="flex items-start gap-3 p-2.5 rounded-xl bg-[#F5F7FA] border border-slate-200/70">
                     <span className="text-sm font-black text-brand-blue flex-shrink-0">{track.step}</span>
                     <div>
                       <span className="text-sm font-bold text-brand-navy block">{track.title}</span>
@@ -164,7 +179,7 @@ export default function CareersSection() {
               </div>
             </div>
 
-            <div className="flex items-start gap-2.5 text-sm text-slate-600 p-3.5 rounded-xl bg-blue-50/70 border border-blue-100">
+            <div className="flex items-start gap-2.5 text-sm text-slate-700 p-3.5 rounded-xl bg-white border border-blue-100 shadow-2xs">
               <ShieldCheck className="w-4.5 h-4.5 text-brand-blue flex-shrink-0 mt-0.5" />
               <span className="leading-snug text-justify">
                 Requires active CNO license or accredited Ontario PSW certificate, plus Police Vulnerable Sector screening.

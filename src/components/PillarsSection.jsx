@@ -19,14 +19,14 @@ export default function PillarsSection() {
     {
       title: "Qualified & Vetted Staff",
       tag: "Rigorous Screening",
-      desc: "Every nurse and PSW passes Police Vulnerable Sector checks, CNO active license checks, and CPR-HCP certification.",
+      desc: "Every nurse and PSW passes Police Vulnerable Sector checks, CNO active license verification, and CPR-HCP certification.",
       points: ["Police Vulnerable Sector Cleared", "Active CNO License Verified"],
       icon: ShieldCheck
     },
     {
       title: "Compassion First",
       tag: "Dignity & Safety",
-      desc: "We pair clinical precision with genuine warmth—preserving personal dignity and independence in every routine.",
+      desc: "We pair clinical precision with genuine warmth—preserving personal dignity and independence in every daily routine.",
       points: ["Respectful daily living pacing", "Culturally sensitive care matching"],
       icon: HeartHandshake
     },
@@ -47,26 +47,25 @@ export default function PillarsSection() {
   ];
 
   return (
-    <section id="why-choose-us" className="scroll-mt-28 py-12 sm:py-16 bg-brand-surface border-b border-slate-200/70">
+    <section id="why-choose-us" className="scroll-mt-28 py-12 sm:py-16 bg-soft border-b border-slate-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Header + Compact Switcher */}
+        {/* Header + Eyebrow + Tab Switcher */}
         <Reveal>
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 sm:mb-10">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-9">
             <div className="max-w-2xl">
-              <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-brand-blue mb-1.5 block">
+              <span className="eyebrow">
                 About Aquarius & Standards
               </span>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight">
                 Clinical Excellence & Reliability Since 2016
               </h2>
               <p className="mt-2 text-sm sm:text-base text-slate-600 text-justify leading-relaxed">
-                Bridging hospital-grade nursing with the personal comfort of home across Ontario.
+                Bridging hospital-grade nursing with the comfort of home across Stoney Creek, Hamilton, and Ontario.
               </p>
             </div>
 
-            {/* Compact Switcher keeps height concise */}
-            <div className="inline-flex p-1 bg-white rounded-full border border-slate-200/90 shadow-2xs self-start">
+            <div className="inline-flex p-1.5 bg-white rounded-full border border-slate-200/90 shadow-subtle self-start">
               <button
                 onClick={() => setActiveTab('pillars')}
                 className={`px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all ${
@@ -97,10 +96,10 @@ export default function PillarsSection() {
               const Icon = item.icon;
               return (
                 <Reveal key={idx} delay={idx * 70}>
-                  <div className="h-full bg-white rounded-3xl p-6 border border-slate-200/90 shadow-subtle card-hover flex flex-col justify-between">
+                  <div className="h-full card-ab p-6 flex flex-col justify-between">
                     <div>
-                      <div className="w-11 h-11 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center text-brand-blue mb-4">
-                        <Icon className="w-5 h-5" />
+                      <div className="card-icon mb-4">
+                        <Icon className="w-6 h-6" />
                       </div>
 
                       <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-1">
@@ -131,9 +130,9 @@ export default function PillarsSection() {
           </div>
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 animate-fadeIn">
-            <div className="lg:col-span-5 bg-gradient-to-br from-[#F0F6FF] to-white rounded-3xl p-6 sm:p-7 border border-blue-100/90 shadow-subtle">
-              <div className="flex items-center gap-2.5 mb-3">
-                <div className="w-9 h-9 rounded-xl bg-brand-blue text-white flex items-center justify-center">
+            <div className="lg:col-span-5 card-ab p-6 sm:p-7">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="card-icon !w-11 !h-11">
                   <Compass className="w-5 h-5" />
                 </div>
                 <h3 className="text-base font-extrabold text-brand-navy uppercase tracking-wider">
@@ -145,9 +144,9 @@ export default function PillarsSection() {
               </p>
             </div>
 
-            <div className="lg:col-span-4 bg-gradient-to-br from-[#F0FDFB] to-white rounded-3xl p-6 sm:p-7 border border-teal-100/90 shadow-subtle">
-              <div className="flex items-center gap-2.5 mb-3">
-                <div className="w-9 h-9 rounded-xl bg-brand-teal text-white flex items-center justify-center">
+            <div className="lg:col-span-4 card-ab p-6 sm:p-7">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="card-icon !w-11 !h-11 !bg-teal-50 !text-brand-teal">
                   <Eye className="w-5 h-5" />
                 </div>
                 <h3 className="text-base font-extrabold text-brand-navy uppercase tracking-wider">
@@ -159,7 +158,7 @@ export default function PillarsSection() {
               </p>
             </div>
 
-            <div className="lg:col-span-3 bg-brand-navy text-white rounded-3xl p-6 sm:p-7 border border-slate-800 shadow-premium">
+            <div className="lg:col-span-3 bg-brand-navy text-white rounded-[20px] p-6 sm:p-7 border border-slate-800 shadow-elevated">
               <div className="flex items-center gap-2 mb-3">
                 <Languages className="w-5 h-5 text-teal-300" />
                 <span className="text-sm font-extrabold uppercase tracking-wider text-slate-200">
