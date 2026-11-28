@@ -160,28 +160,9 @@ export default function CareersSection() {
               })}
             </div>
 
-            {/* Compact Care Pro Growth Pathway */}
-            <div className="p-5 rounded-[20px] bg-white border border-slate-200/80 shadow-subtle">
-              <h4 className="text-xs sm:text-sm font-extrabold text-brand-navy uppercase tracking-wider mb-3 flex items-center gap-2">
-                <Users className="w-4 h-4 text-brand-blue" />
-                <span>Care Professional Support Pathway</span>
-              </h4>
-              <div className="space-y-2.5">
-                {CAREER_GROWTH_TRACKS.map((track) => (
-                  <div key={track.step} className="flex items-start gap-3 p-2.5 rounded-xl bg-[#F5F7FA] border border-slate-200/70">
-                    <span className="text-sm font-black text-brand-blue flex-shrink-0">{track.step}</span>
-                    <div>
-                      <span className="text-sm font-bold text-brand-navy block">{track.title}</span>
-                      <span className="text-xs sm:text-sm text-slate-600 leading-snug block">{track.desc}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="flex items-start gap-2.5 text-sm text-slate-700 p-3.5 rounded-xl bg-white border border-blue-100 shadow-2xs">
-              <ShieldCheck className="w-4.5 h-4.5 text-brand-blue flex-shrink-0 mt-0.5" />
-              <span className="leading-snug text-justify">
+            <div className="flex items-start gap-2.5 text-sm text-slate-700 p-4 rounded-2xl bg-white border border-blue-100 shadow-2xs">
+              <ShieldCheck className="w-5 h-5 text-brand-blue flex-shrink-0 mt-0.5" />
+              <span className="leading-relaxed text-justify">
                 Requires active CNO license or accredited Ontario PSW certificate, plus Police Vulnerable Sector screening.
               </span>
             </div>
@@ -395,6 +376,36 @@ export default function CareersSection() {
             )}
           </div>
 
+        </div>
+
+        {/* Horizontal Full-Width 4-Column Care Professional Support Pathway */}
+        <div className="mt-10">
+          <div className="flex items-center gap-2 mb-4">
+            <Users className="w-4.5 h-4.5 text-brand-blue" />
+            <h3 className="text-sm font-extrabold text-brand-navy uppercase tracking-wider">
+              Care Professional Support Pathway
+            </h3>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {CAREER_GROWTH_TRACKS.map((track, idx) => (
+              <Reveal key={track.step} delay={idx * 70}>
+                <div className="h-full card-ab p-5 flex flex-col justify-between">
+                  <div>
+                    <span className="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-[#EAF1FA] text-brand-blue font-black text-sm mb-3">
+                      {track.step}
+                    </span>
+                    <h4 className="text-base font-extrabold text-brand-navy">
+                      {track.title}
+                    </h4>
+                    <p className="mt-2 text-sm text-slate-600 leading-relaxed text-justify">
+                      {track.desc}
+                    </p>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
 
       </div>
