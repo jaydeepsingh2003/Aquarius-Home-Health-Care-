@@ -9,7 +9,6 @@ import CareersSection from './components/CareersSection';
 import CareAssessmentWizard from './components/CareAssessmentWizard';
 import TestimonialsSection from './components/TestimonialsSection';
 import FaqSection from './components/FaqSection';
-import ServiceAreaSection from './components/ServiceAreaSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import UrgentStaffingModal from './components/UrgentStaffingModal';
@@ -44,7 +43,7 @@ export default function App() {
   return (
     <div className="min-h-screen flex flex-col bg-brand-surface text-brand-slate-900 selection:bg-brand-blue selection:text-white pb-16 sm:pb-0 overflow-x-hidden">
       
-      {/* Executive Healthcare Navbar (Matching User Reference Layout) */}
+      {/* Executive Fixed Navbar */}
       <Navbar 
         onOpenStaffingModal={() => setIsStaffingModalOpen(true)}
         onOpenConsultationModal={handleOpenStandardConsultation}
@@ -52,7 +51,7 @@ export default function App() {
       />
 
       <main className="flex-grow">
-        {/* Luxury Dual-Audience Hero */}
+        {/* Dual-Audience Hero + Trust Metrics Ribbon */}
         <HeroSection 
           activeAudience={activeAudience}
           setActiveAudience={setActiveAudience}
@@ -61,10 +60,10 @@ export default function App() {
           onScrollToWizard={handleScrollToWizard}
         />
 
-        {/* About Us: Mission, Vision, Multilingual Support, 4 Pillars & 4-Tier Clinical Vetting */}
+        {/* About Us: Core Pillars + Mission, Vision & Languages */}
         <PillarsSection />
 
-        {/* Dual Services, PSW/RPN/RN Matrix & Modular Custom Care Plan Combiner */}
+        {/* Services: Core Role Tiers, Interactive Custom Care Plan Builder & Facility Staffing */}
         <DualServicesSection 
           activeAudience={activeAudience}
           onOpenConsultationModal={handleOpenStandardConsultation}
@@ -72,42 +71,34 @@ export default function App() {
           onOpenCustomPlanModal={handleOpenCustomPlanModal}
         />
 
-        {/* 3-Step Onboarding & Shift Coverage Process */}
-        <HowItWorksSection 
-          onOpenConsultationModal={handleOpenStandardConsultation}
-          onOpenStaffingModal={() => setIsStaffingModalOpen(true)}
-        />
-
         {/* Dedicated Healthcare Facilities & Hospital Staffing Section (#facilities) */}
         <FacilitiesSection 
           onOpenStaffingModal={() => setIsStaffingModalOpen(true)}
         />
 
-        {/* Dedicated Clinical Recruitment & Care Pro Growth Pathway (#careers) */}
-        <CareersSection 
-          onOpenCareersModal={() => setIsCareersModalOpen(true)}
+        {/* Concise 3-Step Onboarding Timeline */}
+        <HowItWorksSection 
+          onOpenConsultationModal={handleOpenStandardConsultation}
+          onOpenStaffingModal={() => setIsStaffingModalOpen(true)}
         />
 
-        {/* 60-Second Care Assessment Matcher with Cryptographic UUID Tracking */}
+        {/* Dedicated Clinical Recruitment & Care Pro Growth Pathway (#careers) */}
+        <CareersSection />
+
+        {/* 60-Second Care Assessment Matcher */}
         <CareAssessmentWizard />
 
-        {/* Verified Client & Clinical Partner Feedback */}
+        {/* Client & Clinical Partner Testimonials */}
         <TestimonialsSection />
 
-        {/* Frequently Asked Questions (Insurance, Vetting & 24/7 Dispatch) */}
-        <FaqSection onOpenConsultationModal={handleOpenStandardConsultation} />
+        {/* Frequently Asked Questions */}
+        <FaqSection />
 
-        {/* Stoney Creek Operational HQ & Ontario Coverage */}
-        <ServiceAreaSection 
-          onOpenStaffingModal={() => setIsStaffingModalOpen(true)}
-          onOpenConsultationModal={handleOpenStandardConsultation}
-        />
-
-        {/* Direct Contact & Scheduling Desk */}
+        {/* Unified Stoney Creek HQ, Ontario Coverage & Contact Form (#contact) */}
         <ContactSection />
       </main>
 
-      {/* Professional Canadian Healthcare Footer */}
+      {/* Footer */}
       <Footer 
         onOpenStaffingModal={() => setIsStaffingModalOpen(true)}
         onOpenConsultationModal={handleOpenStandardConsultation}
@@ -133,7 +124,7 @@ export default function App() {
         onClose={() => setIsCareersModalOpen(false)}
       />
 
-      {/* Native-grade Floating Mobile Dock */}
+      {/* Mobile Floating Dock */}
       <FloatingMobileDock 
         onOpenStaffingModal={() => setIsStaffingModalOpen(true)}
         onOpenConsultationModal={handleOpenStandardConsultation}

@@ -155,33 +155,33 @@ export default function CareAssessmentWizard() {
   };
 
   return (
-    <section id="care-wizard" className="scroll-mt-28 py-20 bg-white border-b border-slate-100">
+    <section id="care-wizard" className="scroll-mt-28 py-12 sm:py-16 bg-white border-b border-slate-100">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="text-center max-w-xl mx-auto mb-10">
-          <span className="text-xs font-bold uppercase tracking-wider text-brand-blue mb-2 block">
+        <div className="text-center max-w-xl mx-auto mb-8">
+          <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-brand-blue mb-1.5 block">
             Care Matcher
           </span>
-          <h2 className="text-3xl font-extrabold text-brand-navy tracking-tight">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-brand-navy tracking-tight">
             Find the Right Level of Care
           </h2>
-          <p className="mt-2 text-sm text-slate-600">
-            Complete this brief 60-second assessment for a personalized recommendation.
+          <p className="mt-2 text-sm sm:text-base text-slate-600">
+            Complete this quick 60-second assessment for a tailored recommendation.
           </p>
         </div>
 
         {/* Wizard Card */}
-        <div className="bg-brand-surface rounded-3xl p-6 sm:p-9 border border-slate-200/90 shadow-2xs">
+        <div className="bg-brand-surface rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-subtle">
           
           {/* Progress Indicator */}
           {!submitted && (
-            <div className="mb-8">
-              <div className="flex items-center justify-between text-xs font-semibold text-slate-500 mb-2">
+            <div className="mb-7">
+              <div className="flex items-center justify-between text-xs sm:text-sm font-semibold text-slate-600 mb-2">
                 <span>Step {step} of 4</span>
                 <span>{step === 1 ? 'Care Recipient' : step === 2 ? 'Support Required' : step === 3 ? 'Schedule' : 'Recommendation'}</span>
               </div>
-              <div className="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
+              <div className="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
                 <div 
                   className="bg-brand-blue h-full transition-all duration-300"
                   style={{ width: `${(step / 4) * 100}%` }}
@@ -193,36 +193,36 @@ export default function CareAssessmentWizard() {
           {/* STEP 1: Care Recipient */}
           {step === 1 && (
             <div>
-              <h3 className="text-lg font-bold text-brand-navy mb-1">
+              <h3 className="text-lg sm:text-xl font-bold text-brand-navy mb-1">
                 Who requires care and assistance?
               </h3>
-              <p className="text-xs text-slate-500 mb-5">
+              <p className="text-sm text-slate-500 mb-5">
                 Select the individual needing in-home health support.
               </p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 {[
                   { id: 'parent', label: 'Aging Parent(s)', desc: 'Mother or father living at home' },
                   { id: 'spouse', label: 'Spouse or Partner', desc: 'Partner needing recovery or daily support' },
                   { id: 'self', label: 'Myself', desc: 'Personal home care or rehabilitation' },
-                  { id: 'hospital-discharge', label: 'Hospital Discharge', desc: 'Transitioning home after acute surgical stay' }
+                  { id: 'hospital-discharge', label: 'Hospital Discharge', desc: 'Transitioning home after surgery' }
                 ].map((opt) => (
                   <button
                     key={opt.id}
                     onClick={() => handleSelect('recipient', opt.id)}
-                    className={`p-4 rounded-xl border text-left transition ${
+                    className={`p-4 rounded-2xl border text-left transition card-hover ${
                       answers.recipient === opt.id
-                        ? 'border-brand-blue bg-white shadow-xs'
+                        ? 'border-brand-blue bg-blue-50/40 shadow-xs'
                         : 'border-slate-200 hover:border-slate-300 bg-white'
                     }`}
                   >
                     <div className="flex items-center justify-between">
-                      <span className="font-bold text-sm text-brand-navy">{opt.label}</span>
+                      <span className="font-bold text-base text-brand-navy">{opt.label}</span>
                       {answers.recipient === opt.id && (
                         <CheckCircle2 className="w-4 h-4 text-brand-blue" />
                       )}
                     </div>
-                    <p className="text-[11px] text-slate-500 mt-0.5">{opt.desc}</p>
+                    <p className="text-sm text-slate-600 mt-1">{opt.desc}</p>
                   </button>
                 ))}
               </div>
@@ -231,14 +231,14 @@ export default function CareAssessmentWizard() {
                 <button
                   disabled={!answers.recipient}
                   onClick={() => setStep(2)}
-                  className={`px-6 py-2.5 rounded-xl font-bold text-xs flex items-center gap-1.5 transition ${
+                  className={`px-6 py-2.5 rounded-full font-bold text-sm flex items-center gap-1.5 transition ${
                     answers.recipient
-                      ? 'bg-brand-blue text-white hover:bg-brand-blue-600 shadow-xs'
+                      ? 'bg-brand-blue text-white hover:bg-blue-700 shadow-xs'
                       : 'bg-slate-200 text-slate-400 cursor-not-allowed'
                   }`}
                 >
                   <span>Continue</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
             </div>
@@ -247,36 +247,36 @@ export default function CareAssessmentWizard() {
           {/* STEP 2: Support Type */}
           {step === 2 && (
             <div>
-              <h3 className="text-lg font-bold text-brand-navy mb-1">
+              <h3 className="text-lg sm:text-xl font-bold text-brand-navy mb-1">
                 What primary level of support is needed?
               </h3>
-              <p className="text-xs text-slate-500 mb-5">
-                Identifies whether a Certified PSW, Licensed RPN, or RN is needed.
+              <p className="text-sm text-slate-500 mb-5">
+                Identifies whether a Certified PSW, Licensed RPN, or RN fits best.
               </p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 {[
                   { id: 'daily-living', label: 'Personal Support (ADLs)', desc: 'Bathing, dressing, meals, mobility' },
                   { id: 'skilled-nursing', label: 'Skilled Nursing', desc: 'Wound care, catheter, medications' },
-                  { id: 'dementia', label: 'Dementia & Memory Care', desc: 'Patience, gentle routine, wandering safety' },
+                  { id: 'dementia', label: 'Dementia & Memory Care', desc: 'Patience, gentle routine, safety' },
                   { id: 'palliative', label: 'Palliative & Respite', desc: 'Pain management and family comfort' }
                 ].map((opt) => (
                   <button
                     key={opt.id}
                     onClick={() => handleSelect('supportType', opt.id)}
-                    className={`p-4 rounded-xl border text-left transition ${
+                    className={`p-4 rounded-2xl border text-left transition card-hover ${
                       answers.supportType === opt.id
-                        ? 'border-brand-blue bg-white shadow-xs'
+                        ? 'border-brand-blue bg-blue-50/40 shadow-xs'
                         : 'border-slate-200 hover:border-slate-300 bg-white'
                     }`}
                   >
                     <div className="flex items-center justify-between">
-                      <span className="font-bold text-sm text-brand-navy">{opt.label}</span>
+                      <span className="font-bold text-base text-brand-navy">{opt.label}</span>
                       {answers.supportType === opt.id && (
                         <CheckCircle2 className="w-4 h-4 text-brand-blue" />
                       )}
                     </div>
-                    <p className="text-[11px] text-slate-500 mt-0.5">{opt.desc}</p>
+                    <p className="text-sm text-slate-600 mt-1">{opt.desc}</p>
                   </button>
                 ))}
               </div>
@@ -284,23 +284,23 @@ export default function CareAssessmentWizard() {
               <div className="mt-6 flex justify-between">
                 <button
                   onClick={() => setStep(1)}
-                  className="px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-200/60 flex items-center gap-1"
+                  className="px-4 py-2 rounded-full text-sm font-semibold text-slate-600 hover:bg-slate-200/60 flex items-center gap-1"
                 >
-                  <ArrowLeft className="w-3.5 h-3.5" />
+                  <ArrowLeft className="w-4 h-4" />
                   <span>Back</span>
                 </button>
 
                 <button
                   disabled={!answers.supportType}
                   onClick={() => setStep(3)}
-                  className={`px-6 py-2.5 rounded-xl font-bold text-xs flex items-center gap-1.5 transition ${
+                  className={`px-6 py-2.5 rounded-full font-bold text-sm flex items-center gap-1.5 transition ${
                     answers.supportType
-                      ? 'bg-brand-blue text-white hover:bg-brand-blue-600 shadow-xs'
+                      ? 'bg-brand-blue text-white hover:bg-blue-700 shadow-xs'
                       : 'bg-slate-200 text-slate-400 cursor-not-allowed'
                   }`}
                 >
                   <span>Continue</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
             </div>

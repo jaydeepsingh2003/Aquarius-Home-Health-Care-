@@ -23,7 +23,7 @@ export default function Footer({ onOpenStaffingModal, onOpenConsultationModal, o
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 pb-10 border-b border-slate-800">
           
           {/* Brand & Mission Statement */}
-          <div className="lg:col-span-5 space-y-3.5">
+          <div className="lg:col-span-5 space-y-4">
             <a href="#home" className="inline-block bg-white px-3 py-1.5 rounded-xl border border-slate-700 shadow-xs" title="Return to Top">
               <img 
                 src="/aquarius-logo.png" 
@@ -32,17 +32,17 @@ export default function Footer({ onOpenStaffingModal, onOpenConsultationModal, o
               />
             </a>
 
-            <p className="text-xs text-slate-400 leading-relaxed max-w-sm text-justify">
-              Since 2016, bridging the gap between quality healthcare and personal comfort. Delivering qualified PSWs, RPNs, and RNs for in-home care and institutional staffing across Ontario.
+            <p className="text-sm text-slate-300 leading-relaxed max-w-sm text-justify">
+              Since 2016, bridging quality healthcare and personal comfort. Delivering vetted PSWs, RPNs, and RNs across Ontario.
             </p>
 
-            <div className="pt-1 text-xs text-slate-400 space-y-1">
+            <div className="pt-1 text-sm text-slate-300 space-y-1.5">
               <div className="flex items-center gap-2">
-                <ShieldCheck className="w-3.5 h-3.5 text-brand-teal" />
+                <ShieldCheck className="w-4 h-4 text-brand-teal" />
                 <span>Police Vulnerable Sector Screened Staff</span>
               </div>
               <div className="flex items-center gap-2">
-                <Clock className="w-3.5 h-3.5 text-brand-amber" />
+                <Clock className="w-4 h-4 text-brand-amber" />
                 <span>24/7/365 On-Call Dispatch Desk</span>
               </div>
             </div>
@@ -50,41 +50,40 @@ export default function Footer({ onOpenStaffingModal, onOpenConsultationModal, o
 
           {/* Quick Links */}
           <div className="lg:col-span-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-3">
+            <h4 className="text-sm font-bold uppercase tracking-wider text-white mb-3.5">
               Services & Portals
             </h4>
-            <ul className="space-y-2 text-xs text-slate-400">
+            <ul className="space-y-2.5 text-sm text-slate-300">
               <li><button onClick={onOpenConsultationModal} className="hover:text-white transition text-left">Personal Support Workers (PSW)</button></li>
               <li><button onClick={onOpenConsultationModal} className="hover:text-white transition text-left">Registered Practical Nurses (RPN)</button></li>
               <li><button onClick={onOpenConsultationModal} className="hover:text-white transition text-left">Registered Nurses (RN Acute Care)</button></li>
-              <li><button onClick={onOpenStaffingModal} className="hover:text-white transition text-left text-brand-teal font-semibold">Hospital Surge Shift Coverage</button></li>
-              <li><button onClick={onOpenStaffingModal} className="hover:text-white transition text-left text-brand-teal font-semibold">Long-Term Care Home Staffing</button></li>
-              <li><button onClick={onOpenCareersModal} className="hover:text-white transition text-left text-brand-amber font-semibold">Careers: Join Our Care Team (PSW/RPN/RN)</button></li>
+              <li><button onClick={onOpenStaffingModal} className="hover:text-white transition text-left text-teal-300 font-semibold">Hospital & LTC Staffing Relief</button></li>
+              <li><button onClick={onOpenCareersModal} className="hover:text-white transition text-left text-amber-300 font-semibold">Careers: Join Our Care Team</button></li>
             </ul>
           </div>
 
           {/* Office & Direct Contact */}
-          <div className="lg:col-span-4 space-y-2.5">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-3">
+          <div className="lg:col-span-4 space-y-3">
+            <h4 className="text-sm font-bold uppercase tracking-wider text-white mb-3.5">
               Stoney Creek Headquarters
             </h4>
 
-            <div className="text-xs text-slate-400 space-y-1.5">
+            <div className="text-sm text-slate-300 space-y-2">
               <p className="flex items-start gap-2">
-                <MapPin className="w-3.5 h-3.5 text-brand-teal flex-shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 text-brand-teal flex-shrink-0 mt-1" />
                 <span>{COMPANY_INFO.address.full}</span>
               </p>
 
               <p className="flex items-center gap-2">
-                <Phone className="w-3.5 h-3.5 text-brand-amber flex-shrink-0" />
+                <Phone className="w-4 h-4 text-brand-amber flex-shrink-0" />
                 <a href={`tel:${COMPANY_INFO.phoneRaw}`} className="text-white font-bold hover:underline">
                   {COMPANY_INFO.phone} (24/7 Live Desk)
                 </a>
               </p>
 
               <p className="flex items-center gap-2">
-                <Mail className="w-3.5 h-3.5 text-brand-blue flex-shrink-0" />
-                <a href={`mailto:${COMPANY_INFO.email}`} className="text-slate-300 hover:underline truncate">
+                <Mail className="w-4 h-4 text-brand-blue flex-shrink-0" />
+                <a href={`mailto:${COMPANY_INFO.email}`} className="text-slate-200 hover:underline truncate">
                   {COMPANY_INFO.email}
                 </a>
               </p>
@@ -94,7 +93,7 @@ export default function Footer({ onOpenStaffingModal, onOpenConsultationModal, o
         </div>
 
         {/* Regulatory & Emergency Notice */}
-        <div className="pt-6 pb-2 text-[11px] text-slate-500 space-y-1 leading-relaxed text-justify">
+        <div className="pt-6 pb-2 text-xs sm:text-sm text-slate-400 space-y-1.5 leading-relaxed text-justify">
           <p>
             <strong>Medical Notice:</strong> If experiencing an acute life-threatening emergency, please dial 911 immediately.
           </p>
